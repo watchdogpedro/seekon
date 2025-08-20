@@ -3,6 +3,15 @@ import React from 'react';
 function App() {
   return (
     <div className="App">
+      {/* Full-Width Banner Image */}
+      <section className="hero-banner">
+        <img 
+          src="/images/hero-seekon-jetsons.png" 
+          alt="SeekON AI-powered SEO platform"
+          className="banner-image"
+        />
+      </section>
+
       {/* Hero Section */}
       <section className="hero">
         <div className="container">
@@ -22,13 +31,6 @@ function App() {
                 ▶️ Watch 90-sec Overview
               </button>
             </div>
-
-            {/* Hero Image */}
-            <img 
-              src="/images/hero-seekon-jetsons.png" 
-              alt="SeekON AI-powered SEO platform"
-              className="hero-image"
-            />
           </div>
         </div>
       </section>
