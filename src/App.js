@@ -23,9 +23,9 @@ function App() {
               </button>
             </div>
 
-            {/* Hero Image - Will show when uploaded */}
+            {/* Hero Image */}
             <img 
-              src="https://via.placeholder.com/800x400/667eea/ffffff?text=Your+Jetsons+Hero+Image+Here" 
+              src="/images/hero-image.png" 
               alt="SeekON AI-powered SEO platform"
               className="hero-image"
             />
@@ -67,9 +67,9 @@ function App() {
             </div>
           </div>
 
-          {/* Control Room Image Placeholder */}
+          {/* Control Room Image */}
           <img 
-            src="https://via.placeholder.com/800x500/764ba2/ffffff?text=Your+Control+Room+Dashboard+Here" 
+            src="/images/control-room.png" 
             alt="Control room dashboard"
             style={{
               width: '100%',
