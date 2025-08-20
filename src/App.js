@@ -25,7 +25,7 @@ function App() {
 
             {/* Hero Image */}
             <img 
-              src="/images/hero-image.png" 
+              src="/images/hero-seekon-jetsons.png" 
               alt="SeekON AI-powered SEO platform"
               className="hero-image"
             />
@@ -69,7 +69,7 @@ function App() {
 
           {/* Control Room Image */}
           <img 
-            src="/images/control-room.png" 
+            src="/images/control-room-dashboard.png" 
             alt="Control room dashboard"
             style={{
               width: '100%',
