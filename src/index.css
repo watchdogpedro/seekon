@@ -4,11 +4,18 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   line-height: 1.6;
   color: #333;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
   min-height: 100vh;
 }
 
@@ -21,9 +28,11 @@ body {
 
 .banner-image {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
   display: block;
+  min-height: 300px;
 }
 
 .container {
@@ -33,17 +42,21 @@ body {
 }
 
 .hero {
-  min-height: 100vh;
+  padding: 3rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  margin-top: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
   max-width: 800px;
-  padding: 2rem;
+  padding: 1rem 2rem;
 }
 
 .hero h1 {
@@ -55,6 +68,39 @@ body {
 
 .hero .highlight {
   color: #FFD700;
+}
+
+.jetpack-text {
+  color: #FF3030;
+  font-style: italic;
+  position: relative;
+  display: inline-block;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(255, 48, 48, 0.4);
+}
+
+.jetpack-text::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF3030 0%, #FF6B6B 50%, transparent 100%);
+  transform: translateY(-50%) skew(-20deg);
+  animation: swish 2s ease-in-out infinite;
+  border-radius: 2px;
+}
+
+@keyframes swish {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(-50%) skew(-20deg) translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) skew(-20deg) translateX(10px);
+  }
 }
 
 .hero p {
@@ -107,7 +153,7 @@ body {
 
 .features {
   padding: 4rem 0;
-  background: white;
+  background: transparent;
 }
 
 .features h2 {
@@ -125,16 +171,62 @@ body {
 }
 
 .feature-card {
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(255, 107, 107, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.feature-card > * {
+  position: relative;
+  z-index: 2;
 }
 
 .feature-card:hover {
   transform: translateY(-10px);
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255,255,255,0.1) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.feature-card:hover::after {
+  transform: translateX(100%) translateY(100%) rotate(45deg);
 }
 
 .feature-icon {
@@ -153,7 +245,22 @@ body {
   line-height: 1.6;
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 @media (max-width: 768px) {
+  .banner-image {
+    max-height: 250px;
+    min-height: 200px;
+  }
+  
+  .hero {
+    margin-top: 1rem;
+    padding: 2rem 0;
+  }
+  
   .hero h1 {
     font-size: 2.5rem;
   }
@@ -165,5 +272,27 @@ body {
   .btn {
     display: block;
     margin: 10px 0;
+  }
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Audit tool boxes responsive layout */
+  .audit-boxes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    max-width: 600px !important;
   }
 }
