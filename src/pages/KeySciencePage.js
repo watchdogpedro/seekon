@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const KeySciencePage = () => {
   const [expandedCard, setExpandedCard] = useState(null);
+  const containerRef = useRef(null);
 
   const toggleCard = (index) => {
     setExpandedCard(expandedCard === index ? null : index);
   };
+
+  // Click outside to close expanded card
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setExpandedCard(null);
+      }
+    };
+
+    if (expandedCard !== null) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [expandedCard]);
 
   const keyPoints = [
     {
@@ -165,14 +183,16 @@ const KeySciencePage = () => {
             }}>🌟</div>
 
             {/* Professional Interactive Cards */}
-            <div style={{ 
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-              gap: '1.5rem',
-              position: 'relative',
-              zIndex: 10,
-              overflow: 'visible'
-            }}>
+            <div 
+              ref={containerRef}
+              style={{ 
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                gap: '1.5rem',
+                position: 'relative',
+                zIndex: 10,
+                overflow: 'visible'
+              }}>
               {keyPoints.map((point, index) => {
                 const colors = [
                   { bg: '#667eea', accent: '#4f46e5' },
