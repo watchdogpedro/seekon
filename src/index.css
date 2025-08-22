@@ -71,12 +71,12 @@ body {
 }
 
 .jetpack-text {
-  color: #FF3030;
+  color: #0EA5E9;
   font-style: italic;
   position: relative;
   display: inline-block;
   font-weight: 900;
-  text-shadow: 2px 2px 4px rgba(255, 48, 48, 0.4);
+  text-shadow: 2px 2px 4px rgba(14, 165, 233, 0.4);
 }
 
 .jetpack-text::after {
@@ -86,7 +86,7 @@ body {
   right: -20px;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #FF3030 0%, #FF6B6B 50%, transparent 100%);
+  background: linear-gradient(90deg, #0EA5E9 0%, #38BDF8 50%, transparent 100%);
   transform: translateY(-50%) skew(-20deg);
   animation: swish 2s ease-in-out infinite;
   border-radius: 2px;

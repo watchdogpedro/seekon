@@ -48,7 +48,7 @@ const HomePage = () => {
         <div className="container">
           <div className="hero-content">
             <h1>
-              SEO going to AEO<br />
+              Get Found in the Age of AI Search<br />
               <span className="jetpack-text">Jetpack Your Rankings</span>
             </h1>
             <p>
