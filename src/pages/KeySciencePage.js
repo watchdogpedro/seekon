@@ -170,7 +170,8 @@ const KeySciencePage = () => {
               gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
               gap: '1.5rem',
               position: 'relative',
-              zIndex: 10
+              zIndex: 10,
+              overflow: 'visible'
             }}>
               {keyPoints.map((point, index) => {
                 const colors = [
@@ -206,10 +207,8 @@ const KeySciencePage = () => {
                       cursor: 'pointer',
                       transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                       position: 'relative',
-                      transform: isExpanded ? 'scale(2)' : 'scale(1)',
-                      zIndex: isExpanded ? 1000 : 1,
-                      gridColumn: isExpanded ? 'span 2' : 'span 1',
-                      minHeight: isExpanded ? '600px' : 'auto'
+                      transform: isExpanded ? 'scale(1.5)' : 'scale(1)',
+                      zIndex: isExpanded ? 100 : 1
                     }}
                     onMouseEnter={(e) => {
                       if (!isExpanded) {
