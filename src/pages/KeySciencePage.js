@@ -90,9 +90,19 @@ const KeySciencePage = () => {
 
   return (
     <div style={{ 
-      background: 'linear-gradient(135deg, #9ca3af 0%, #6b7280 100%)',
+      background: `
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.8) 0%, transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,0.6) 0%, transparent 30%),
+        radial-gradient(circle at 30% 60%, rgba(255,255,255,0.7) 0%, transparent 35%),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.5) 0%, transparent 25%),
+        radial-gradient(circle at 90% 50%, rgba(255,255,255,0.6) 0%, transparent 30%),
+        radial-gradient(circle at 10% 80%, rgba(255,255,255,0.4) 0%, transparent 20%),
+        linear-gradient(135deg, #87CEEB 0%, #4682B4 50%, #1E90FF 100%)
+      `,
       minHeight: '100vh',
-      color: 'white'
+      color: 'white',
+      position: 'relative',
+      overflow: 'hidden'
     }}>
       <style>{`
         .speech-bubble:before {
@@ -120,8 +130,113 @@ const KeySciencePage = () => {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.7; transform: scale(1.2); }
         }
+        
+        .floating-clouds {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 1;
+        }
+        
+        .cloud {
+          position: absolute;
+          background: rgba(255,255,255,0.4);
+          border-radius: 50px;
+          opacity: 0.7;
+        }
+        
+        .cloud:before,
+        .cloud:after {
+          content: '';
+          position: absolute;
+          background: rgba(255,255,255,0.4);
+          border-radius: 50px;
+        }
+        
+        .cloud1 {
+          width: 80px;
+          height: 40px;
+          top: 10%;
+          left: -10%;
+          animation: float-right 25s infinite linear;
+        }
+        
+        .cloud1:before {
+          width: 50px;
+          height: 50px;
+          top: -25px;
+          left: 10px;
+        }
+        
+        .cloud1:after {
+          width: 60px;
+          height: 35px;
+          top: -15px;
+          right: 10px;
+        }
+        
+        .cloud2 {
+          width: 100px;
+          height: 50px;
+          top: 20%;
+          left: -15%;
+          animation: float-right 35s infinite linear;
+          animation-delay: -5s;
+        }
+        
+        .cloud2:before {
+          width: 60px;
+          height: 60px;
+          top: -30px;
+          left: 15px;
+        }
+        
+        .cloud2:after {
+          width: 70px;
+          height: 40px;
+          top: -20px;
+          right: 15px;
+        }
+        
+        .cloud3 {
+          width: 120px;
+          height: 60px;
+          top: 5%;
+          left: -20%;
+          animation: float-right 45s infinite linear;
+          animation-delay: -15s;
+        }
+        
+        .cloud3:before {
+          width: 70px;
+          height: 70px;
+          top: -35px;
+          left: 20px;
+        }
+        
+        .cloud3:after {
+          width: 80px;
+          height: 45px;
+          top: -25px;
+          right: 20px;
+        }
+        
+        @keyframes float-right {
+          0% { transform: translateX(-100px); }
+          100% { transform: translateX(calc(100vw + 100px)); }
+        }
       `}</style>
-      <section style={{ padding: '4rem 0' }}>
+      
+      {/* Animated Floating Clouds */}
+      <div className="floating-clouds">
+        <div className="cloud cloud1"></div>
+        <div className="cloud cloud2"></div>
+        <div className="cloud cloud3"></div>
+      </div>
+      <section style={{ padding: '4rem 0', position: 'relative', zIndex: 10 }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h1 style={{ 
