@@ -203,20 +203,6 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Control Room Image */}
-          <img 
-            src="/images/control-room-dashboard.png" 
-            alt="Control room dashboard"
-            style={{
-              width: '100%',
-              height: '200px',
-              objectFit: 'fill',
-              margin: '0 auto',
-              display: 'block',
-              borderRadius: '20px',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
-            }}
-          />
         </div>
       </section>
 
