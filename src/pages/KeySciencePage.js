@@ -356,17 +356,9 @@ const KeySciencePage = () => {
               Ready to Master AEO? 🚀
             </h2>
             <p style={{ marginBottom: '2rem', opacity: 0.9, fontSize: '1.1rem' }}>
-              Put this key science into action with our Orbital Scan. 
+              Put this key science into action with our comprehensive audit tool. 
               See exactly how AI-ready your website is right now.
             </p>
-            <button className="btn btn-primary" style={{ 
-              background: 'white', 
-              color: '#667eea',
-              fontSize: '1.1rem',
-              padding: '1rem 2rem'
-            }}>
-              🛰️ Run Your Free Orbital Scan
-            </button>
           </div>
         </div>
       </section>

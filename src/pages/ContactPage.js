@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import OrbitalScanTool from '../components/OrbitalScanTool';
+import { Link } from 'react-router-dom';
 
 const ContactPage = () => {
-  const [showScanModal, setShowScanModal] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -278,11 +277,11 @@ const ContactPage = () => {
                 }}>
                   <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>🚀 Quick Start</h3>
                   <p style={{ marginBottom: '1rem', color: '#666' }}>
-                    Ready to begin? Start with our free Orbital Scan to see how LLM-ready your site is.
+                    Ready to begin? Start with our comprehensive audit to see how AI-ready your site is.
                   </p>
-                  <button className="btn btn-primary" onClick={() => setShowScanModal(true)}>
-                    Run Free Orbital Scan
-                  </button>
+                  <Link to="/audit-tool" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                    Get Free SEO & AI Audit
+                  </Link>
                 </div>
                 
                 {/* Schedule Call */}
@@ -344,24 +343,6 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Orbital Scan Modal */}
-      {showScanModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.7)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 10000,
-          padding: '2rem'
-        }}>
-          <OrbitalScanTool isModal={true} onClose={() => setShowScanModal(false)} />
-        </div>
-      )}
     </div>
   );
 };

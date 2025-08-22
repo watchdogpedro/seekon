@@ -99,7 +99,7 @@ const AboutPage = () => {
                   Let our three decades of marketing expertise guide your transition to LLM-optimized content.
                 </p>
                 <button className="btn btn-primary">
-                  🚀 Start Your Orbital Scan
+                  🚀 Get Your Free Audit
                 </button>
               </div>
             </div>

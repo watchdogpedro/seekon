@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import OrbitalScanTool from '../components/OrbitalScanTool';
 import OrbitalScanExplainer from '../components/OrbitalScanExplainer';
 import CosmoBriefsExplainer from '../components/CosmoBriefsExplainer';
 import HyperdriveMonitorExplainer from '../components/HyperdriveMonitorExplainer';
@@ -9,7 +8,6 @@ import AISearchSimulationExplainer from '../components/AISearchSimulationExplain
 import ActionableInsightsExplainer from '../components/ActionableInsightsExplainer';
 
 const HomePage = () => {
-  const [showScanModal, setShowScanModal] = useState(false);
   const [showOrbitalExplainer, setShowOrbitalExplainer] = useState(false);
   const [showCosmoBriefsExplainer, setShowCosmoBriefsExplainer] = useState(false);
   const [showHyperdriveExplainer, setShowHyperdriveExplainer] = useState(false);
@@ -17,8 +15,6 @@ const HomePage = () => {
   const [showAISearchSimulationExplainer, setShowAISearchSimulationExplainer] = useState(false);
   const [showActionableInsightsExplainer, setShowActionableInsightsExplainer] = useState(false);
 
-  const openScanModal = () => setShowScanModal(true);
-  const closeScanModal = () => setShowScanModal(false);
   const openOrbitalExplainer = () => setShowOrbitalExplainer(true);
   const closeOrbitalExplainer = () => setShowOrbitalExplainer(false);
   const openCosmoBriefsExplainer = () => setShowCosmoBriefsExplainer(true);
@@ -59,9 +55,6 @@ const HomePage = () => {
               <Link to="/audit-tool" className="btn btn-primary" style={{ textDecoration: 'none' }}>
                 🔍 Get Free SEO & AI Audit
               </Link>
-              <button className="btn btn-secondary" onClick={openScanModal}>
-                🚀 Quick Orbital Scan
-              </button>
             </div>
           </div>
         </div>
@@ -412,24 +405,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Orbital Scan Modal */}
-      {showScanModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0,0,0,0.7)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 10000,
-          padding: '2rem'
-        }}>
-          <OrbitalScanTool isModal={true} onClose={closeScanModal} />
-        </div>
-      )}
 
       {/* Orbital Scan Explainer Modal */}
       <OrbitalScanExplainer 
