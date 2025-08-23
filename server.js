@@ -200,6 +200,59 @@ app.post('/api/consultation-request', async (req, res) => {
   }
 });
 
+// Contact form endpoint
+app.post('/api/contact-form', async (req, res) => {
+  try {
+    const contactData = req.body;
+    
+    console.log('💬 NEW CONTACT FORM SUBMISSION RECEIVED:', {
+      name: contactData.name,
+      email: contactData.email,
+      company: contactData.company,
+      industry: contactData.industry,
+      message: contactData.message?.substring(0, 100) + '...',
+      timestamp: contactData.timestamp
+    });
+
+    // Add to Google Sheets in ContactForms sheet
+    const rows = [[
+      contactData.timestamp,
+      contactData.name,
+      contactData.email,
+      contactData.company || '',
+      contactData.industry || '',
+      contactData.message || '',
+      contactData.source || 'SEEKON.AI Contact Form'
+    ]];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+      range: 'ContactForms!A:G',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: rows
+      }
+    });
+
+    console.log('✅ Contact form saved to Google Sheets successfully');
+    console.log('📧 Email notification needed for watchdogpedro@gmail.com');
+
+    res.json({ 
+      success: true, 
+      message: 'Thanks for connecting! We will get right back to you within 24 hours.',
+      submissionId: Date.now(),
+      notification: 'Contact form saved to Google Sheets - watchdogpedro@gmail.com will be notified'
+    });
+
+  } catch (error) {
+    console.error('❌ Error processing contact form:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error processing your message. Please try again or email watchdogpedro@gmail.com directly.' 
+    });
+  }
+});
+
 // Serve static files from the build directory
 app.use(express.static(path.join(__dirname, 'build')));
 

@@ -26,21 +26,43 @@ const ContactPage = () => {
     setSubmitStatus(null);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // In a real implementation, you would send the data to your backend
-      console.log('Form submitted:', formData);
-      
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        industry: '',
-        message: ''
+      // Prepare the data with timestamp
+      const submissionData = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        source: 'SEEKON.AI Contact Form'
+      };
+
+      // Submit to our backend API
+      const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3001/api/contact-form'
+        : '/api/contact-form';
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
       });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        console.log('Contact form submitted successfully:', result);
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          industry: '',
+          message: ''
+        });
+      } else {
+        throw new Error(result.message || 'Failed to submit contact form');
+      }
     } catch (error) {
+      console.error('Error submitting contact form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -85,12 +107,15 @@ const ContactPage = () => {
                   <div style={{
                     background: '#4CAF50',
                     color: 'white',
-                    padding: '1rem',
-                    borderRadius: '10px',
+                    padding: '1.5rem',
+                    borderRadius: '15px',
                     textAlign: 'center',
-                    marginBottom: '1rem'
+                    marginBottom: '1rem',
+                    fontSize: '1.1rem',
+                    fontWeight: 'bold',
+                    boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)'
                   }}>
-                    ✅ Message sent successfully! We'll get back to you within 24 hours.
+                    🎉 Thanks for connecting! We will get right back to you within 24 hours.
                   </div>
                 )}
                 
