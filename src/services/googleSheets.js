@@ -13,7 +13,11 @@ export const addEmailToSheet = async (email, timestamp = new Date().toISOString(
     localStorage.setItem('seekon_emails', JSON.stringify(existingEmails));
     
     // Submit to our backend API
-    const response = await fetch('http://localhost:3001/api/add-email', {
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? 'http://localhost:3001/api/add-email'
+      : '/api/add-email';
+    
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
