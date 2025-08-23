@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import TransformationForm from '../components/TransformationForm';
 
 const CaseStudiesPage = () => {
+  const [showTransformationForm, setShowTransformationForm] = useState(false);
   const caseStudies = [
     {
       company: "MedTech Innovations",
@@ -192,12 +194,22 @@ const CaseStudiesPage = () => {
             <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
               Join industry leaders who are already winning in the LLM era
             </p>
-            <button className="btn btn-primary" style={{ background: 'white', color: '#667eea' }}>
+            <button 
+              className="btn btn-primary" 
+              style={{ background: 'white', color: '#667eea' }}
+              onClick={() => setShowTransformationForm(true)}
+            >
               🚀 Start Your Transformation
             </button>
           </div>
         </div>
       </section>
+
+      {/* Transformation Form Modal */}
+      <TransformationForm 
+        isOpen={showTransformationForm}
+        onClose={() => setShowTransformationForm(false)}
+      />
     </div>
   );
 };

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import TransformationForm from '../components/TransformationForm';
 
 const ServicesPage = () => {
+  const [showTransformationForm, setShowTransformationForm] = useState(false);
   const services = [
     {
       icon: '🛰️',
@@ -170,19 +172,22 @@ const ServicesPage = () => {
                     🔍 Start Free Audit
                   </Link>
                 ) : (
-                  <button style={{
-                    width: '100%',
-                    padding: '1rem',
-                    background: index === 1 ? '#667eea' : 'transparent',
-                    color: index === 1 ? 'white' : '#667eea',
-                    border: `2px solid #667eea`,
-                    borderRadius: '50px',
-                    fontSize: '1rem',
-                    fontWeight: 'bold',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}>
-                    Get Started
+                  <button 
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      background: index === 1 ? '#667eea' : 'transparent',
+                      color: index === 1 ? 'white' : '#667eea',
+                      border: `2px solid #667eea`,
+                      borderRadius: '50px',
+                      fontSize: '1rem',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                    onClick={() => setShowTransformationForm(true)}
+                  >
+                    🚀 Start Transformation
                   </button>
                 )}
               </div>
@@ -207,6 +212,12 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Transformation Form Modal */}
+      <TransformationForm 
+        isOpen={showTransformationForm}
+        onClose={() => setShowTransformationForm(false)}
+      />
     </div>
   );
 };
