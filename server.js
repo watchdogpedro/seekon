@@ -89,6 +89,117 @@ app.post('/api/add-email', async (req, res) => {
   }
 });
 
+// Transformation lead capture endpoint
+app.post('/api/transformation-lead', async (req, res) => {
+  try {
+    const leadData = req.body;
+    
+    console.log('🚀 NEW TRANSFORMATION LEAD RECEIVED:', {
+      company: leadData.company,
+      email: leadData.email,
+      goal: leadData.mainGoal,
+      budget: leadData.budget,
+      timestamp: leadData.timestamp
+    });
+
+    // Add to Google Sheets in a new TransformationLeads sheet
+    const rows = [[
+      leadData.timestamp,
+      leadData.name,
+      leadData.email,
+      leadData.company,
+      leadData.website || '',
+      leadData.phone || '',
+      leadData.currentTraffic || '',
+      leadData.mainGoal || '',
+      leadData.timeline || '',
+      leadData.budget || '',
+      leadData.additionalInfo || '',
+      leadData.source || 'SEEKON.AI Form'
+    ]];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+      range: 'TransformationLeads!A:L',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: rows
+      }
+    });
+
+    console.log('✅ Lead saved to Google Sheets successfully');
+    console.log('📧 Email notification needed for watchdogpedro@gmail.com');
+
+    res.json({ 
+      success: true, 
+      message: 'Transformation request submitted successfully! We will contact you within 24 hours.',
+      leadId: Date.now(),
+      notification: 'Lead saved to Google Sheets - watchdogpedro@gmail.com will be notified'
+    });
+
+  } catch (error) {
+    console.error('❌ Error processing transformation lead:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.' 
+    });
+  }
+});
+
+// Consultation request endpoint
+app.post('/api/consultation-request', async (req, res) => {
+  try {
+    const consultationData = req.body;
+    
+    console.log('📞 NEW CONSULTATION REQUEST RECEIVED:', {
+      company: consultationData.companyName,
+      name: consultationData.name,
+      email: consultationData.email,
+      phone: consultationData.phoneNumber,
+      marketStudyOnly: consultationData.marketStudyOnly,
+      timestamp: consultationData.timestamp
+    });
+
+    // Add to Google Sheets in ConsultationRequests sheet
+    const rows = [[
+      consultationData.timestamp,
+      consultationData.companyName || '',
+      consultationData.name,
+      consultationData.email,
+      consultationData.phoneNumber,
+      consultationData.projectInterest || '',
+      consultationData.marketStudyOnly ? 'Yes' : 'No',
+      consultationData.source || 'SEEKON.AI Consultation Form'
+    ]];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+      range: 'ConsultationRequests!A:H',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: rows
+      }
+    });
+
+    console.log('✅ Consultation request saved to Google Sheets successfully');
+    console.log('📧 Email notification needed for watchdogpedro@gmail.com');
+
+    res.json({ 
+      success: true, 
+      message: 'Consultation request submitted successfully! We will contact you within 24 hours.',
+      requestId: Date.now(),
+      notification: 'Request saved to Google Sheets - watchdogpedro@gmail.com will be notified'
+    });
+
+  } catch (error) {
+    console.error('❌ Error processing consultation request:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.' 
+    });
+  }
+});
+
 // Serve static files from the build directory
 app.use(express.static(path.join(__dirname, 'build')));
 

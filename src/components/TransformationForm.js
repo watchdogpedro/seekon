@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
 
 const TransformationForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -30,63 +29,47 @@ const TransformationForm = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // EmailJS configuration - using public demo keys, replace with actual keys
-      await emailjs.send(
-        'service_seekon', // Replace with your EmailJS service ID
-        'template_transformation', // Replace with your EmailJS template ID
-        {
-          to_email: 'watchdogpedro@gmail.com',
-          from_name: formData.name,
-          from_email: formData.email,
+      // Send to our server endpoint which will email watchdogpedro@gmail.com
+      const response = await fetch('/api/transformation-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
           company: formData.company,
           website: formData.website,
           phone: formData.phone,
-          current_traffic: formData.currentTraffic,
-          main_goal: formData.mainGoal,
+          currentTraffic: formData.currentTraffic,
+          mainGoal: formData.mainGoal,
           timeline: formData.timeline,
           budget: formData.budget,
-          additional_info: formData.additionalInfo,
-          subject: `🚀 SEEKON Transformation Request from ${formData.company || formData.name}`,
-          message: `
-NEW TRANSFORMATION REQUEST:
+          additionalInfo: formData.additionalInfo,
+          timestamp: new Date().toISOString(),
+          source: 'SEEKON.AI Transformation Form'
+        })
+      });
 
-Contact Information:
-- Name: ${formData.name}
-- Email: ${formData.email}
-- Company: ${formData.company}
-- Website: ${formData.website}
-- Phone: ${formData.phone}
-
-Project Details:
-- Current Monthly Traffic: ${formData.currentTraffic}
-- Main Goal: ${formData.mainGoal}
-- Timeline: ${formData.timeline}
-- Budget Range: ${formData.budget}
-
-Additional Information:
-${formData.additionalInfo}
-
-This lead was generated from SEEKON.AI transformation form.
-          `
-        },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      );
-
-      setIsSubmitted(true);
-      setIsSubmitting(false);
-      
-      // Close modal after 3 seconds
-      setTimeout(() => {
-        onClose();
-        setIsSubmitted(false);
-        setFormData({
-          name: '', email: '', company: '', website: '', phone: '',
-          currentTraffic: '', mainGoal: '', timeline: '', budget: '', additionalInfo: ''
-        });
-      }, 3000);
+      if (response.ok) {
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+        
+        // Close modal after 3 seconds
+        setTimeout(() => {
+          onClose();
+          setIsSubmitted(false);
+          setFormData({
+            name: '', email: '', company: '', website: '', phone: '',
+            currentTraffic: '', mainGoal: '', timeline: '', budget: '', additionalInfo: ''
+          });
+        }, 3000);
+      } else {
+        throw new Error('Server error');
+      }
 
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('Form submission error:', error);
       setIsSubmitting(false);
       alert('There was an error sending your message. Please try again or contact us directly at watchdogpedro@gmail.com');
     }

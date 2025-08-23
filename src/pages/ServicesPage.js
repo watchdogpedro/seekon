@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import TransformationForm from '../components/TransformationForm';
+import ConsultationForm from '../components/ConsultationForm';
 
 const ServicesPage = () => {
   const [showTransformationForm, setShowTransformationForm] = useState(false);
+  const [showConsultationForm, setShowConsultationForm] = useState(false);
   const services = [
     {
       icon: '🛰️',
@@ -171,6 +173,21 @@ const ServicesPage = () => {
                   >
                     🔍 Start Free Audit
                   </Link>
+                ) : index === 3 ? (
+                  // No button for Enterprise Mission Control (quarterly business reviews)
+                  <div style={{
+                    width: '100%',
+                    padding: '1rem',
+                    background: '#f8f9fa',
+                    color: '#666',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '50px',
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                    textAlign: 'center'
+                  }}>
+                    Contact for Pricing
+                  </div>
                 ) : (
                   <button 
                     style={{
@@ -206,8 +223,23 @@ const ServicesPage = () => {
             <p style={{ marginBottom: '2rem', color: '#666' }}>
               Our team can create a tailored LLM optimization strategy for your specific industry and goals.
             </p>
-            <button className="btn btn-primary">
-              Schedule Consultation
+            <button 
+              className="btn btn-primary"
+              onClick={() => setShowConsultationForm(true)}
+              style={{
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+              }}
+            >
+              📞 Schedule Consultation
             </button>
           </div>
         </div>
@@ -217,6 +249,12 @@ const ServicesPage = () => {
       <TransformationForm 
         isOpen={showTransformationForm}
         onClose={() => setShowTransformationForm(false)}
+      />
+
+      {/* Consultation Form Modal */}
+      <ConsultationForm 
+        isOpen={showConsultationForm}
+        onClose={() => setShowConsultationForm(false)}
       />
     </div>
   );
