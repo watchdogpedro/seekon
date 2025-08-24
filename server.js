@@ -3,13 +3,18 @@ const path = require('path');
 const cors = require('cors');
 const { GoogleAuth } = require('google-auth-library');
 const { google } = require('googleapis');
+const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002', 'https://seekon-ai-platform.herokuapp.com'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Initialize Google Sheets API
@@ -19,6 +24,102 @@ const auth = new GoogleAuth({
 });
 
 const sheets = google.sheets({ version: 'v4', auth });
+
+// Initialize email transporter
+const createTransporter = () => {
+  if (process.env.GMAIL_USER && process.env.GMAIL_PASS && process.env.GMAIL_PASS !== 'your_app_password_here') {
+    return nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS
+      }
+    });
+  }
+  return null;
+};
+
+// Email sending function optimized for Heroku
+const sendNotificationEmail = async (subject, htmlContent, formData) => {
+  // Try SendGrid (Heroku add-on auto-configures SENDGRID_API_KEY)
+  const sendgridKey = process.env.SENDGRID_API_KEY || process.env.SENDGRID_PASSWORD;
+  
+  if (sendgridKey && sendgridKey !== 'your_sendgrid_api_key_here' && sendgridKey !== 'placeholder_for_heroku' && !sendgridKey.includes('${')) {
+    sgMail.setApiKey(sendgridKey);
+    
+    try {
+      // Determine recipient based on email type
+      let recipientEmail = 'paul@seekon.ai'; // Your main inbox
+      let fromEmail = 'noreply@seekon.ai';
+      
+      // Route different form types to different addresses
+      if (subject.includes('TRANSFORMATION LEAD')) {
+        recipientEmail = 'sales@seekon.ai';
+        fromEmail = 'sales@seekon.ai';
+      } else if (subject.includes('CONSULTATION REQUEST')) {
+        recipientEmail = 'sales@seekon.ai';  
+        fromEmail = 'sales@seekon.ai';
+      } else if (subject.includes('CONTACT FORM')) {
+        recipientEmail = 'contact@seekon.ai';
+        fromEmail = 'contact@seekon.ai';
+      }
+
+      const msg = {
+        to: recipientEmail,
+        from: {
+          email: fromEmail,
+          name: 'SeekON AI Platform'
+        },
+        subject: subject,
+        html: htmlContent,
+        replyTo: formData.email || fromEmail,
+        trackingSettings: {
+          clickTracking: { enable: true },
+          openTracking: { enable: true }
+        }
+      };
+
+      const result = await sgMail.send(msg);
+      console.log('✅ Email sent via SendGrid (Heroku) successfully');
+      return { success: true, messageId: result[0].headers['x-message-id'], provider: 'SendGrid-Heroku' };
+    } catch (error) {
+      console.error('❌ SendGrid email failed:', error.response?.body || error.message);
+    }
+  }
+
+  // Fallback to Gmail SMTP
+  const transporter = createTransporter();
+  
+  if (!transporter) {
+    console.log('⚠️ No email service configured - need SendGrid API key or Gmail App Password');
+    return { success: false, message: 'Email not configured' };
+  }
+
+  try {
+    // Gmail fallback routing  
+    let recipientEmail = 'paul@seekon.ai';
+    if (subject.includes('TRANSFORMATION LEAD') || subject.includes('CONSULTATION REQUEST')) {
+      recipientEmail = 'sales@seekon.ai';
+    } else if (subject.includes('CONTACT FORM')) {
+      recipientEmail = 'contact@seekon.ai';
+    }
+
+    const mailOptions = {
+      from: process.env.GMAIL_USER,
+      to: recipientEmail,
+      subject: subject,
+      html: htmlContent,
+      replyTo: formData.email || process.env.GMAIL_USER
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent via Gmail successfully:', result.messageId);
+    return { success: true, messageId: result.messageId, provider: 'Gmail' };
+  } catch (error) {
+    console.error('❌ Gmail email sending failed:', error.message);
+    return { success: false, error: error.message };
+  }
+};
 
 // API endpoint to add email to Google Sheet with rate limiting
 app.post('/api/add-email', async (req, res) => {
@@ -102,7 +203,7 @@ app.post('/api/transformation-lead', async (req, res) => {
       timestamp: leadData.timestamp
     });
 
-    // Add to Google Sheets in a new TransformationLeads sheet
+    // Add to Google Sheets with fallback to main sheet if TransformationLeads doesn't exist
     const rows = [[
       leadData.timestamp,
       leadData.name,
@@ -115,33 +216,72 @@ app.post('/api/transformation-lead', async (req, res) => {
       leadData.timeline || '',
       leadData.budget || '',
       leadData.additionalInfo || '',
-      leadData.source || 'SEEKON.AI Form'
+      'TRANSFORMATION LEAD - ' + (leadData.source || 'SEEKON.AI Form')
     ]];
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
-      range: 'TransformationLeads!A:L',
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: rows
-      }
-    });
+    try {
+      // Try to write to TransformationLeads sheet first
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+        range: 'TransformationLeads!A:L',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: rows
+        }
+      });
+      console.log('✅ Lead saved to TransformationLeads sheet successfully');
+    } catch (sheetError) {
+      console.log('⚠️ TransformationLeads sheet not found, trying main Sheet1...');
+      // Fallback to main sheet if TransformationLeads doesn't exist
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+        range: 'Sheet1!A:L',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: rows
+        }
+      });
+      console.log('✅ Lead saved to Sheet1 successfully as fallback');
+    }
 
-    console.log('✅ Lead saved to Google Sheets successfully');
-    console.log('📧 Email notification needed for watchdogpedro@gmail.com');
+    // Send email notification
+    const emailSubject = `🚀 NEW TRANSFORMATION LEAD - ${leadData.company}`;
+    const emailContent = `
+      <h2>New Transformation Lead Received</h2>
+      <p><strong>Timestamp:</strong> ${leadData.timestamp}</p>
+      <p><strong>Name:</strong> ${leadData.name}</p>
+      <p><strong>Email:</strong> ${leadData.email}</p>
+      <p><strong>Company:</strong> ${leadData.company}</p>
+      <p><strong>Website:</strong> ${leadData.website || 'Not provided'}</p>
+      <p><strong>Phone:</strong> ${leadData.phone || 'Not provided'}</p>
+      <p><strong>Current Traffic:</strong> ${leadData.currentTraffic || 'Not specified'}</p>
+      <p><strong>Main Goal:</strong> ${leadData.mainGoal || 'Not specified'}</p>
+      <p><strong>Timeline:</strong> ${leadData.timeline || 'Not specified'}</p>
+      <p><strong>Budget:</strong> ${leadData.budget || 'Not specified'}</p>
+      <p><strong>Additional Info:</strong> ${leadData.additionalInfo || 'None provided'}</p>
+      <p><strong>Source:</strong> ${leadData.source || 'SEEKON.AI Form'}</p>
+      <hr>
+      <p><em>This lead has been automatically saved to Google Sheets.</em></p>
+    `;
+
+    const emailResult = await sendNotificationEmail(emailSubject, emailContent, leadData);
+    console.log('📧 Email notification result:', emailResult.success ? 'Sent' : 'Failed');
 
     res.json({ 
       success: true, 
       message: 'Transformation request submitted successfully! We will contact you within 24 hours.',
       leadId: Date.now(),
-      notification: 'Lead saved to Google Sheets - watchdogpedro@gmail.com will be notified'
+      notification: 'Lead saved to Google Sheets - watchdogpedro@gmail.com will be notified',
+      emailSent: emailResult.success
     });
 
   } catch (error) {
     console.error('❌ Error processing transformation lead:', error);
+    console.error('Error details:', error.response?.data || error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.' 
+      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.',
+      debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });
@@ -160,7 +300,7 @@ app.post('/api/consultation-request', async (req, res) => {
       timestamp: consultationData.timestamp
     });
 
-    // Add to Google Sheets in ConsultationRequests sheet
+    // Add to Google Sheets with fallback to main sheet
     const rows = [[
       consultationData.timestamp,
       consultationData.companyName || '',
@@ -169,33 +309,68 @@ app.post('/api/consultation-request', async (req, res) => {
       consultationData.phoneNumber,
       consultationData.projectInterest || '',
       consultationData.marketStudyOnly ? 'Yes' : 'No',
-      consultationData.source || 'SEEKON.AI Consultation Form'
+      'CONSULTATION REQUEST - ' + (consultationData.source || 'SEEKON.AI Consultation Form')
     ]];
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
-      range: 'ConsultationRequests!A:H',
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: rows
-      }
-    });
+    try {
+      // Try ConsultationRequests sheet first
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+        range: 'ConsultationRequests!A:H',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: rows
+        }
+      });
+      console.log('✅ Consultation request saved to ConsultationRequests sheet successfully');
+    } catch (sheetError) {
+      console.log('⚠️ ConsultationRequests sheet not found, trying main Sheet1...');
+      // Fallback to main sheet
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+        range: 'Sheet1!A:H',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: rows
+        }
+      });
+      console.log('✅ Consultation request saved to Sheet1 successfully as fallback');
+    }
 
-    console.log('✅ Consultation request saved to Google Sheets successfully');
-    console.log('📧 Email notification needed for watchdogpedro@gmail.com');
+    // Send email notification
+    const emailSubject = `📞 NEW CONSULTATION REQUEST - ${consultationData.companyName || consultationData.name}`;
+    const emailContent = `
+      <h2>New Consultation Request Received</h2>
+      <p><strong>Timestamp:</strong> ${consultationData.timestamp}</p>
+      <p><strong>Company:</strong> ${consultationData.companyName || 'Not provided'}</p>
+      <p><strong>Name:</strong> ${consultationData.name}</p>
+      <p><strong>Email:</strong> ${consultationData.email}</p>
+      <p><strong>Phone:</strong> ${consultationData.phoneNumber}</p>
+      <p><strong>Project Interest:</strong> ${consultationData.projectInterest || 'Not specified'}</p>
+      <p><strong>Market Study Only:</strong> ${consultationData.marketStudyOnly ? 'Yes' : 'No'}</p>
+      <p><strong>Source:</strong> ${consultationData.source || 'SEEKON.AI Consultation Form'}</p>
+      <hr>
+      <p><em>This consultation request has been automatically saved to Google Sheets.</em></p>
+    `;
+
+    const emailResult = await sendNotificationEmail(emailSubject, emailContent, consultationData);
+    console.log('📧 Email notification result:', emailResult.success ? 'Sent' : 'Failed');
 
     res.json({ 
       success: true, 
       message: 'Consultation request submitted successfully! We will contact you within 24 hours.',
       requestId: Date.now(),
-      notification: 'Request saved to Google Sheets - watchdogpedro@gmail.com will be notified'
+      notification: 'Request saved to Google Sheets - watchdogpedro@gmail.com will be notified',
+      emailSent: emailResult.success
     });
 
   } catch (error) {
     console.error('❌ Error processing consultation request:', error);
+    console.error('Error details:', error.response?.data || error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.' 
+      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.',
+      debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });
@@ -214,7 +389,7 @@ app.post('/api/contact-form', async (req, res) => {
       timestamp: contactData.timestamp
     });
 
-    // Add to Google Sheets in ContactForms sheet
+    // Add to Google Sheets with fallback to main sheet
     const rows = [[
       contactData.timestamp,
       contactData.name,
@@ -222,33 +397,70 @@ app.post('/api/contact-form', async (req, res) => {
       contactData.company || '',
       contactData.industry || '',
       contactData.message || '',
-      contactData.source || 'SEEKON.AI Contact Form'
+      'CONTACT FORM - ' + (contactData.source || 'SEEKON.AI Contact Form')
     ]];
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
-      range: 'ContactForms!A:G',
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: rows
-      }
-    });
+    try {
+      // Try ContactForms sheet first
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+        range: 'ContactForms!A:G',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: rows
+        }
+      });
+      console.log('✅ Contact form saved to ContactForms sheet successfully');
+    } catch (sheetError) {
+      console.log('⚠️ ContactForms sheet not found, trying main Sheet1...');
+      // Fallback to main sheet
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: process.env.REACT_APP_SPREADSHEET_ID,
+        range: 'Sheet1!A:G',
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: rows
+        }
+      });
+      console.log('✅ Contact form saved to Sheet1 successfully as fallback');
+    }
 
-    console.log('✅ Contact form saved to Google Sheets successfully');
-    console.log('📧 Email notification needed for watchdogpedro@gmail.com');
+    // Send email notification
+    const emailSubject = `💬 NEW CONTACT FORM - ${contactData.name} from ${contactData.company || 'Unknown Company'}`;
+    const emailContent = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Timestamp:</strong> ${contactData.timestamp}</p>
+      <p><strong>Name:</strong> ${contactData.name}</p>
+      <p><strong>Email:</strong> ${contactData.email}</p>
+      <p><strong>Company:</strong> ${contactData.company || 'Not provided'}</p>
+      <p><strong>Industry:</strong> ${contactData.industry || 'Not specified'}</p>
+      <p><strong>Message:</strong></p>
+      <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #667eea; margin: 10px 0;">
+        ${(contactData.message || 'No message provided').replace(/\n/g, '<br>')}
+      </div>
+      <p><strong>Source:</strong> ${contactData.source || 'SEEKON.AI Contact Form'}</p>
+      <hr>
+      <p><em>This contact form has been automatically saved to Google Sheets.</em></p>
+    `;
+
+    const emailResult = await sendNotificationEmail(emailSubject, emailContent, contactData);
+    console.log('📧 Email notification result:', emailResult.success ? 'Sent' : 'Failed');
 
     res.json({ 
       success: true, 
       message: 'Thanks for connecting! We will get right back to you within 24 hours.',
       submissionId: Date.now(),
-      notification: 'Contact form saved to Google Sheets - watchdogpedro@gmail.com will be notified'
+      notification: 'Contact form saved to Google Sheets - watchdogpedro@gmail.com will be notified',
+      emailSent: emailResult.success
     });
 
   } catch (error) {
     console.error('❌ Error processing contact form:', error);
+    console.error('Error details:', error.response?.data || error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Error processing your message. Please try again or email watchdogpedro@gmail.com directly.' 
+      message: 'Error processing your message. Please try again or email watchdogpedro@gmail.com directly.',
+      debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 });

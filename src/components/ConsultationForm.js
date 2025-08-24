@@ -26,7 +26,12 @@ const ConsultationForm = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/consultation-request', {
+      // Use correct API URL for localhost development
+      const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3001/api/consultation-request'
+        : '/api/consultation-request';
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -62,6 +67,7 @@ const ConsultationForm = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
+      console.error('Full error details:', error);
       alert('There was an error sending your message. Please try again or contact us directly at watchdogpedro@gmail.com');
     }
   };

@@ -29,8 +29,13 @@ const TransformationForm = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
+      // Use correct API URL for localhost development
+      const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3001/api/transformation-lead'
+        : '/api/transformation-lead';
+
       // Send to our server endpoint which will email watchdogpedro@gmail.com
-      const response = await fetch('/api/transformation-lead', {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,6 +76,7 @@ const TransformationForm = ({ isOpen, onClose }) => {
     } catch (error) {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
+      console.error('Full error details:', error);
       alert('There was an error sending your message. Please try again or contact us directly at watchdogpedro@gmail.com');
     }
   };
