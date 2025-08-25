@@ -47,11 +47,11 @@ const AuditToolPage = () => {
     
     return {
       scores: {
-        overall: baseScore,
-        classic: baseScore - Math.floor(Math.random() * 10),
-        ai: baseScore + Math.floor(Math.random() * 15),
-        technical: baseScore - Math.floor(Math.random() * 5),
-        content: Math.floor(Math.random() * 25) + 75,
+        overall: Math.max(1, Math.min(100, baseScore)),
+        classic: Math.max(1, Math.min(100, baseScore - Math.floor(Math.random() * 10))),
+        ai: Math.max(1, Math.min(100, baseScore + Math.floor(Math.random() * 15))),
+        technical: Math.max(1, Math.min(100, baseScore - Math.floor(Math.random() * 5))),
+        content: Math.max(1, Math.min(100, Math.floor(Math.random() * 25) + 75)),
         pages: 10
       },
       pages: generatePageAnalysis(domain, keyword),
@@ -123,14 +123,14 @@ const AuditToolPage = () => {
 
   const generateTechnicalMetrics = () => {
     return {
-      'Page Speed': Math.floor(Math.random() * 30) + 70,
-      'Mobile Optimization': Math.floor(Math.random() * 20) + 80,
-      'Schema Markup': Math.floor(Math.random() * 40) + 60,
-      'Content Structure': Math.floor(Math.random() * 25) + 75,
-      'AI Bot Access': Math.floor(Math.random() * 15) + 85,
-      'Internal Linking': Math.floor(Math.random() * 35) + 65,
-      'Meta Optimization': Math.floor(Math.random() * 30) + 70,
-      'URL Structure': Math.floor(Math.random() * 25) + 75
+      'Page Speed': Math.max(0, Math.min(100, Math.floor(Math.random() * 30) + 70)),
+      'Mobile Optimization': Math.max(0, Math.min(100, Math.floor(Math.random() * 20) + 80)),
+      'Schema Markup': Math.max(0, Math.min(100, Math.floor(Math.random() * 40) + 60)),
+      'Content Structure': Math.max(0, Math.min(100, Math.floor(Math.random() * 25) + 75)),
+      'AI Bot Access': Math.max(0, Math.min(100, Math.floor(Math.random() * 15) + 85)),
+      'Internal Linking': Math.max(0, Math.min(100, Math.floor(Math.random() * 35) + 65)),
+      'Meta Optimization': Math.max(0, Math.min(100, Math.floor(Math.random() * 30) + 70)),
+      'URL Structure': Math.max(0, Math.min(100, Math.floor(Math.random() * 25) + 75))
     };
   };
 
@@ -190,7 +190,7 @@ const AuditToolPage = () => {
     setEmailCaptured(true);
   };
 
-  // Canvas chart drawing
+  // Canvas chart drawing with WHITE background
   useEffect(() => {
     if (showReport && auditData) {
       drawPerformanceChart(auditData.technicalMetrics);
@@ -206,7 +206,9 @@ const AuditToolPage = () => {
     const centerY = canvas.height / 2;
     const radius = 120;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // FORCE WHITE BACKGROUND
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const metricNames = Object.keys(metrics);
     const metricValues = Object.values(metrics);
@@ -328,7 +330,6 @@ const AuditToolPage = () => {
           align-items: center;
         }
 
-
         .form-group input {
           width: 100%;
           padding: 28px 35px;
@@ -344,30 +345,6 @@ const AuditToolPage = () => {
             inset 0 -2px 4px rgba(0,0,0,0.05);
         }
 
-        .form-group input:invalid:placeholder-shown {
-          animation: pulseBlue 2s ease-in-out infinite;
-          background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #f0f8ff 100%);
-        }
-
-        @keyframes pulseBlue {
-          0%, 100% {
-            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #f0f8ff 100%);
-            box-shadow: 
-              0 0 20px rgba(59, 130, 246, 0.3),
-              0 8px 25px rgba(0,0,0,0.1),
-              inset 0 2px 4px rgba(255,255,255,0.9),
-              inset 0 -2px 4px rgba(0,0,0,0.05);
-          }
-          50% {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #dbeafe 100%);
-            box-shadow: 
-              0 0 30px rgba(59, 130, 246, 0.5),
-              0 8px 25px rgba(0,0,0,0.1),
-              inset 0 2px 4px rgba(255,255,255,0.9),
-              inset 0 -2px 4px rgba(0,0,0,0.05);
-          }
-        }
-
         .form-group input:focus {
           outline: none;
           border-color: #667eea;
@@ -377,13 +354,6 @@ const AuditToolPage = () => {
             inset 0 2px 4px rgba(255,255,255,0.9),
             inset 0 -2px 4px rgba(0,0,0,0.05);
           transform: translateY(-4px) scale(1.02);
-        }
-
-        .form-group input::placeholder {
-          color: #9ca3af;
-          font-weight: 500;
-          font-style: italic;
-          font-size: 1.3rem;
         }
 
         .generate-button {
@@ -401,65 +371,10 @@ const AuditToolPage = () => {
           display: block;
           text-transform: uppercase;
           letter-spacing: 2px;
-          position: relative;
-          overflow: hidden;
-          box-shadow: 
-            0 0 30px rgba(255, 107, 53, 0.6),
-            0 10px 40px rgba(255, 71, 87, 0.4),
-            inset 0 2px 4px rgba(255, 255, 255, 0.3);
-          border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .generate-button::before {
-          content: '🚀';
-          position: absolute;
-          left: 25px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 24px;
-          animation: rocketBounce 2s ease-in-out infinite;
-        }
-
-        @keyframes rocketBounce {
-          0%, 100% { transform: translateY(-50%) translateX(0px); }
-          50% { transform: translateY(-50%) translateX(5px) rotate(5deg); }
-        }
-
-        .generate-button::after {
-          content: '';
-          position: absolute;
-          right: 20px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 30px;
-          height: 3px;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-          animation: trailEffect 1.5s ease-in-out infinite;
-        }
-
-        @keyframes trailEffect {
-          0% { opacity: 0; transform: translateY(-50%) translateX(-10px); }
-          50% { opacity: 1; transform: translateY(-50%) translateX(0px); }
-          100% { opacity: 0; transform: translateY(-50%) translateX(10px); }
-        }
-
-        .button-container {
-          text-align: center;
-          margin-top: 32px;
         }
 
         .generate-button:hover {
           transform: translateY(-4px) scale(1.02);
-          box-shadow: 
-            0 0 60px rgba(255, 107, 53, 0.9),
-            0 20px 60px rgba(255, 71, 87, 0.6),
-            inset 0 2px 4px rgba(255, 255, 255, 0.4);
-        }
-
-        .generate-button:disabled {
-          background: #9ca3af;
-          cursor: not-allowed;
-          transform: none;
         }
 
         .loading-container {
@@ -469,11 +384,6 @@ const AuditToolPage = () => {
           padding: 60px 40px;
           border-radius: 24px;
           margin-bottom: 40px;
-          border: 2px solid rgba(0, 212, 255, 0.5);
-          box-shadow: 
-            0 0 30px rgba(0, 212, 255, 0.3),
-            inset 0 0 20px rgba(0, 212, 255, 0.1);
-          position: relative;
           color: white;
         }
 
@@ -483,14 +393,8 @@ const AuditToolPage = () => {
           border: 4px solid rgba(0, 212, 255, 0.2);
           border-top: 4px solid #00d4ff;
           border-radius: 50%;
-          animation: spin 1s linear infinite, glow 2s ease-in-out infinite alternate;
+          animation: spin 1s linear infinite;
           margin: 0 auto 24px;
-          box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-        }
-
-        @keyframes glow {
-          from { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-          to { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 212, 255, 0.4); }
         }
 
         @keyframes spin {
@@ -531,14 +435,92 @@ const AuditToolPage = () => {
           text-align: center;
         }
 
-        .report-header h2 {
-          font-size: 2.5rem;
-          font-weight: 800;
-          margin-bottom: 8px;
-        }
-
         .report-content {
           padding: 40px;
+        }
+
+        /* CLEAN WHITE PERFORMANCE MATRIX */
+        .performance-matrix {
+          background: white;
+          border-radius: 20px;
+          padding: 40px;
+          margin: 32px 0;
+          border: 1px solid #e5e7eb;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .matrix-title {
+          text-align: center;
+          color: #333;
+          font-size: 2rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-bottom: 30px;
+        }
+
+        .meter-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 30px;
+        }
+
+        .clean-meter {
+          background: white;
+          border: 1px solid #e5e7eb;
+          border-radius: 15px;
+          padding: 25px;
+          text-align: center;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .meter-label {
+          color: #333;
+          font-size: 0.9rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 15px;
+        }
+
+        .meter-display {
+          width: 120px;
+          height: 120px;
+          margin: 0 auto 15px;
+          position: relative;
+        }
+
+        .meter-circle {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: conic-gradient(
+            from 0deg,
+            #ff0066 0%,
+            #ff3300 25%,
+            #ffcc00 50%,
+            #66ff00 75%,
+            #00ff66 100%
+          );
+          padding: 8px;
+          position: relative;
+        }
+
+        .meter-inner {
+          width: 100%;
+          height: 100%;
+          background: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .meter-value {
+          color: #333;
+          font-size: 1.8rem;
+          font-weight: 800;
         }
 
         .score-dashboard {
@@ -641,10 +623,6 @@ const AuditToolPage = () => {
           vertical-align: middle;
         }
 
-        .data-table tr:last-child td {
-          border-bottom: none;
-        }
-
         .status-badge {
           display: inline-flex;
           align-items: center;
@@ -685,25 +663,6 @@ const AuditToolPage = () => {
           position: relative;
         }
 
-        .ai-simulation::before {
-          content: '🤖';
-          position: absolute;
-          top: -16px;
-          left: 32px;
-          background: white;
-          padding: 8px 12px;
-          border-radius: 20px;
-          font-size: 1.5rem;
-          border: 2px solid #e5e7eb;
-        }
-
-        .ai-query {
-          font-size: 1.125rem;
-          font-weight: 600;
-          color: #333;
-          margin-bottom: 16px;
-        }
-
         .ai-response {
           background: white;
           padding: 24px;
@@ -712,12 +671,6 @@ const AuditToolPage = () => {
           margin-bottom: 16px;
           font-style: italic;
           line-height: 1.8;
-        }
-
-        .citation-status {
-          display: flex;
-          align-items: center;
-          font-weight: 600;
         }
 
         .recommendations {
@@ -733,189 +686,6 @@ const AuditToolPage = () => {
           border-radius: 12px;
           margin-bottom: 16px;
           border-left: 4px solid #667eea;
-          position: relative;
-        }
-
-        .priority-badge {
-          position: absolute;
-          top: -8px;
-          right: 16px;
-          padding: 4px 12px;
-          border-radius: 12px;
-          font-size: 0.75rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-
-        .priority-high {
-          background: #ef4444;
-          color: white;
-        }
-
-        .priority-medium {
-          background: #f59e0b;
-          color: white;
-        }
-
-        .priority-low {
-          background: #10b981;
-          color: white;
-        }
-
-        .recommendation-type {
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: #667eea;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 8px;
-        }
-
-        .calculation-explanation {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 12px;
-          padding: 20px;
-          margin-top: 20px;
-          display: flex;
-          align-items: flex-start;
-          gap: 12px;
-        }
-
-        .info-icon {
-          font-size: 1.5rem;
-          flex-shrink: 0;
-        }
-
-        .calculation-explanation p {
-          margin: 0;
-          font-size: 0.95rem;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        .retro-meter-section {
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-          border-radius: 20px;
-          padding: 40px;
-          margin: 32px 0;
-          border: 3px solid #00d4ff;
-          box-shadow: 
-            0 0 20px rgba(0, 212, 255, 0.3),
-            inset 0 0 20px rgba(0, 212, 255, 0.1);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .retro-meter-section::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-image: 
-            radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
-          pointer-events: none;
-        }
-
-        .retro-title {
-          text-align: center;
-          color: #00d4ff;
-          font-size: 2rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          margin-bottom: 30px;
-          text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
-          position: relative;
-          z-index: 2;
-        }
-
-        .meter-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 30px;
-          position: relative;
-          z-index: 2;
-        }
-
-        .retro-meter {
-          background: radial-gradient(circle, #0a0a23 0%, #1a1a2e 100%);
-          border: 2px solid #00d4ff;
-          border-radius: 15px;
-          padding: 25px;
-          text-align: center;
-          position: relative;
-          box-shadow: 
-            0 0 15px rgba(0, 212, 255, 0.4),
-            inset 0 0 15px rgba(0, 212, 255, 0.1);
-        }
-
-        .meter-label {
-          color: #00d4ff;
-          font-size: 0.9rem;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 15px;
-          text-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
-        }
-
-        .meter-display {
-          width: 120px;
-          height: 120px;
-          margin: 0 auto 15px;
-          position: relative;
-        }
-
-        .meter-circle {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background: conic-gradient(
-            from 0deg,
-            #ff0066 0%,
-            #ff3300 25%,
-            #ffcc00 50%,
-            #66ff00 75%,
-            #00ff66 100%
-          );
-          padding: 8px;
-          position: relative;
-        }
-
-        .meter-inner {
-          width: 100%;
-          height: 100%;
-          background: #0a0a23;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-
-        .meter-value {
-          color: #00d4ff;
-          font-size: 1.8rem;
-          font-weight: 800;
-          text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
-        }
-
-        .meter-needle {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 2px;
-          height: 45px;
-          background: linear-gradient(to top, #00d4ff, #ff0066);
-          transform-origin: bottom center;
-          border-radius: 1px;
-          box-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
         }
 
         .chart-container {
@@ -941,34 +711,17 @@ const AuditToolPage = () => {
           width: 100%;
         }
 
-        .reset-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(107, 114, 128, 0.3);
-        }
-
         @media (max-width: 768px) {
           .form-grid {
             grid-template-columns: 1fr;
-            gap: 16px;
           }
           
           .score-dashboard {
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
           }
           
           .audit-header h1 {
             font-size: 2.5rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .score-dashboard {
-            grid-template-columns: 1fr;
-          }
-          
-          .audit-header h1 {
-            font-size: 2rem;
           }
         }
       `}</style>
@@ -988,7 +741,7 @@ const AuditToolPage = () => {
 
         {emailCaptured && !isLoading && !showReport && (
           <div className="audit-form">
-            <div style={{textAlign: 'center', marginBottom: '20px', color: 'white'}}>
+            <div style={{textAlign: 'center', marginBottom: '20px', color: '#333'}}>
               <p>✅ Email confirmed: {userEmail}</p>
             </div>
             <div className="form-grid">
@@ -1013,9 +766,9 @@ const AuditToolPage = () => {
                 />
               </div>
             </div>
-            <div className="button-container">
+            <div style={{textAlign: 'center'}}>
               <button className="generate-button" onClick={startAudit}>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generate Comprehensive Report
+                🚀 Generate Comprehensive Report
               </button>
             </div>
           </div>
@@ -1044,97 +797,84 @@ const AuditToolPage = () => {
             <div className="report-header">
               <h2>{domain} - SEO & AI Audit</h2>
               <p>Target Keyword: "{keyword}"</p>
-              <div className="calculation-explanation">
-                <div className="info-icon">ℹ️</div>
-                <p>This comprehensive audit analyzes your website using a proprietary algorithm that evaluates 47+ ranking factors across traditional search engines and AI platforms. Scores are calculated by crawling your pages, testing AI bot accessibility, analyzing schema markup, and benchmarking against industry standards.</p>
+              <div style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                padding: '20px',
+                marginTop: '20px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '12px'
+              }}>
+                <div style={{ fontSize: '1.5rem', flexShrink: 0 }}>ℹ️</div>
+                <p style={{
+                  margin: 0,
+                  fontSize: '0.95rem',
+                  lineHeight: 1.6,
+                  color: 'rgba(255, 255, 255, 0.9)'
+                }}>
+                  This comprehensive audit analyzes your website using a proprietary algorithm that evaluates 47+ ranking factors across traditional search engines and AI platforms. Scores are calculated by crawling your pages, testing AI bot accessibility, analyzing schema markup, and benchmarking against industry standards.
+                </p>
               </div>
             </div>
 
             <div className="report-content">
-              {/* Retro Jetsons-Style Meter Section */}
-              <div className="retro-meter-section">
-                <h3 className="retro-title">🚀 Performance Matrix</h3>
+              {/* CLEAN WHITE PERFORMANCE MATRIX */}
+              <div className="performance-matrix">
+                <h3 className="matrix-title">🚀 Performance Matrix</h3>
                 <div className="meter-grid">
-                  <div className="retro-meter">
+                  <div className="clean-meter">
                     <div className="meter-label">Classic SEO</div>
                     <div className="meter-display">
                       <div className="meter-circle">
                         <div className="meter-inner">
                           <div className="meter-value">{auditData.scores.classic}</div>
-                          <div 
-                            className="meter-needle" 
-                            style={{
-                              transform: `translate(-50%, -100%) rotate(${(auditData.scores.classic / 100) * 180 - 90}deg)`
-                            }}
-                          ></div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="retro-meter">
+                  <div className="clean-meter">
                     <div className="meter-label">AI Searchability</div>
                     <div className="meter-display">
                       <div className="meter-circle">
                         <div className="meter-inner">
                           <div className="meter-value">{auditData.scores.ai}</div>
-                          <div 
-                            className="meter-needle" 
-                            style={{
-                              transform: `translate(-50%, -100%) rotate(${(auditData.scores.ai / 100) * 180 - 90}deg)`
-                            }}
-                          ></div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="retro-meter">
+                  <div className="clean-meter">
                     <div className="meter-label">Technical SEO</div>
                     <div className="meter-display">
                       <div className="meter-circle">
                         <div className="meter-inner">
                           <div className="meter-value">{auditData.scores.technical}</div>
-                          <div 
-                            className="meter-needle" 
-                            style={{
-                              transform: `translate(-50%, -100%) rotate(${(auditData.scores.technical / 100) * 180 - 90}deg)`
-                            }}
-                          ></div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="retro-meter">
+                  <div className="clean-meter">
                     <div className="meter-label">Content Quality</div>
                     <div className="meter-display">
                       <div className="meter-circle">
                         <div className="meter-inner">
                           <div className="meter-value">{auditData.scores.content}</div>
-                          <div 
-                            className="meter-needle" 
-                            style={{
-                              transform: `translate(-50%, -100%) rotate(${(auditData.scores.content / 100) * 180 - 90}deg)`
-                            }}
-                          ></div>
                         </div>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="retro-meter">
+                  <div className="clean-meter">
                     <div className="meter-label">Overall Score</div>
                     <div className="meter-display">
                       <div className="meter-circle">
                         <div className="meter-inner">
                           <div className="meter-value">{auditData.scores.overall}</div>
-                          <div 
-                            className="meter-needle" 
-                            style={{
-                              transform: `translate(-50%, -100%) rotate(${(auditData.scores.overall / 100) * 180 - 90}deg)`
-                            }}
-                          ></div>
                         </div>
                       </div>
                     </div>
@@ -1232,13 +972,12 @@ const AuditToolPage = () => {
                   <h2 className="section-title">AI Search Simulation</h2>
                 </div>
                 <div className="ai-simulation">
-                  <div className="ai-query">
-                    Query: "What is {domain} in relation to {keyword}?"
-                  </div>
+                  <h3>Query: "What is {domain} in relation to {keyword}?"</h3>
                   <div className="ai-response">
-                    {auditData.aiAnalysis.response}
-                  </div>
-                  <div className="citation-status">
+                    <strong>Simulated AI Response:</strong>
+                    <p>{auditData.aiAnalysis.response}</p>
+                    <br />
+                    <strong>Citation Status:</strong> 
                     <span className={`status-badge ${auditData.aiAnalysis.citation.class}`}>
                       {auditData.aiAnalysis.citation.text}
                     </span>
@@ -1264,11 +1003,31 @@ const AuditToolPage = () => {
                 <div className="recommendations">
                   {auditData.recommendations.map((rec, index) => (
                     <div key={index} className="recommendation-item">
-                      <div className={`priority-badge priority-${rec.priority.toLowerCase()}`}>
+                      <div style={{
+                        display: 'inline-block',
+                        background: rec.priority === 'HIGH' ? '#ef4444' : rec.priority === 'MEDIUM' ? '#f59e0b' : '#10b981',
+                        color: 'white',
+                        padding: '4px 12px',
+                        borderRadius: '12px',
+                        fontSize: '0.75rem',
+                        fontWeight: '700',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                        marginBottom: '8px'
+                      }}>
                         {rec.priority} PRIORITY
                       </div>
-                      <div className="recommendation-type">{rec.type}</div>
-                      <div className="recommendation-text">{rec.text}</div>
+                      <div style={{
+                        fontSize: '0.875rem',
+                        fontWeight: '600',
+                        color: '#667eea',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                        marginBottom: '8px'
+                      }}>
+                        {rec.type}
+                      </div>
+                      <div>{rec.text}</div>
                     </div>
                   ))}
                 </div>
