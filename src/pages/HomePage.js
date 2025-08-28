@@ -55,7 +55,7 @@ const HomePage = () => {
             </p>
             
             <div>
-              <Link to="/audit-tool" className="btn btn-primary btn-lg" style={{ textDecoration: 'none' }}>
+              <Link to="/audit-tool" className="btn btn-primary btn-lg contact-button" style={{ textDecoration: 'none' }}>
                 🚀 Run Free Orbital Scan
               </Link>
               <button className="btn btn-secondary btn-lg">
@@ -340,6 +340,7 @@ const HomePage = () => {
           
           <Link 
             to="/audit-tool" 
+            className="contact-button"
             style={{
               display: 'inline-block',
               background: 'linear-gradient(45deg, #FF6B6B, #FF8E53)',

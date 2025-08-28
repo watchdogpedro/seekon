@@ -13,12 +13,13 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const NavLink = ({ to, children, isSpecial = false }) => {
+  const NavLink = ({ to, children, isSpecial = false, className = '' }) => {
     const isActive = location.pathname === to;
     
     return (
       <Link 
         to={to} 
+        className={className}
         style={{
           textDecoration: 'none',
           fontWeight: isSpecial ? '700' : '500',
@@ -51,13 +52,14 @@ const Navigation = () => {
     );
   };
 
-  const MobileNavLink = ({ to, children, isSpecial = false }) => {
+  const MobileNavLink = ({ to, children, isSpecial = false, className = '' }) => {
     const isActive = location.pathname === to;
     
     return (
       <Link 
         to={to} 
         onClick={closeMobileMenu}
+        className={className}
         style={{
           textDecoration: 'none',
           fontWeight: isSpecial ? '700' : '500',
@@ -155,9 +157,9 @@ const Navigation = () => {
           
           <NavLink to="/key-science">Key Science</NavLink>
           <NavLink to="/services">Services</NavLink>
-          <NavLink to="/audit-tool" isSpecial>🔍 Free Audit</NavLink>
+          <NavLink to="/audit-tool" isSpecial className="contact-nav-link">🔍 Free Audit</NavLink>
           <NavLink to="/case-studies">Case Studies</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/contact" className="contact-nav-link">Contact</NavLink>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -194,9 +196,9 @@ const Navigation = () => {
           <MobileNavLink to="/resources">📚 Resources</MobileNavLink>
           <MobileNavLink to="/key-science">Key Science</MobileNavLink>
           <MobileNavLink to="/services">Services</MobileNavLink>
-          <MobileNavLink to="/audit-tool" isSpecial>🔍 Free Audit</MobileNavLink>
+          <MobileNavLink to="/audit-tool" isSpecial className="contact-nav-link">🔍 Free Audit</MobileNavLink>
           <MobileNavLink to="/case-studies">Case Studies</MobileNavLink>
-          <MobileNavLink to="/contact">Contact</MobileNavLink>
+          <MobileNavLink to="/contact" className="contact-nav-link">Contact</MobileNavLink>
         </div>
       </div>
     </nav>

@@ -257,6 +257,7 @@ const ContactPage = () => {
                 <button 
                   type="submit"
                   disabled={isSubmitting}
+                  className="contact-button"
                   style={{
                     background: isSubmitting 
                       ? '#ccc' 
@@ -309,7 +310,7 @@ const ContactPage = () => {
                   <p style={{ marginBottom: '1rem', color: '#666' }}>
                     Ready to begin? Start with our comprehensive audit to see how AI-ready your site is.
                   </p>
-                  <Link to="/audit-tool" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                  <Link to="/audit-tool" className="btn btn-primary contact-button" style={{ textDecoration: 'none' }}>
                     Get Free SEO & AI Audit
                   </Link>
                 </div>
@@ -324,7 +325,7 @@ const ContactPage = () => {
                   <p style={{ marginBottom: '1rem', color: '#666' }}>
                     Book a 30-minute consultation to discuss your specific LLM optimization needs.
                   </p>
-                  <button style={{
+                  <button className="contact-button" style={{
                     background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                     color: 'white',
                     border: 'none',
@@ -662,6 +663,7 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
+                className="contact-button"
                 style={{
                   width: '100%',
                   background: isSubmitting 

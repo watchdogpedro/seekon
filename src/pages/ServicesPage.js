@@ -224,7 +224,7 @@ const ServicesPage = () => {
               Our team can create a tailored LLM optimization strategy for your specific industry and goals.
             </p>
             <button 
-              className="btn btn-primary"
+              className="btn btn-primary contact-button"
               onClick={() => setShowConsultationForm(true)}
               style={{
                 cursor: 'pointer',
