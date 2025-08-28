@@ -124,11 +124,29 @@ const Navigation = () => {
               padding: '0.5rem 1rem',
               borderRadius: '20px',
               transition: 'all 0.3s ease',
-              color: 'var(--deep-space)',
+              color: (location.pathname === '/about' || location.pathname === '/resources') ? 'white' : 'var(--deep-space)',
+              background: (location.pathname === '/about' || location.pathname === '/resources') ? 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)' : 'transparent',
               cursor: 'pointer',
               userSelect: 'none',
               display: 'inline-block'
-            }}>About ▼</span>
+            }}
+            onMouseEnter={(e) => {
+              if (location.pathname !== '/about' && location.pathname !== '/resources') {
+                e.target.style.background = 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)';
+                e.target.style.color = 'white';
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (location.pathname !== '/about' && location.pathname !== '/resources') {
+                e.target.style.background = 'transparent';
+                e.target.style.color = 'var(--deep-space)';
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+              }
+            }}
+            >About ▼</span>
             <div className="dropdown-content">
               <Link to="/about">About Us</Link>
               <Link to="/resources">📚 Resources</Link>
