@@ -34,7 +34,7 @@ const TransformationForm = ({ isOpen, onClose }) => {
         ? 'http://localhost:3001/api/transformation-lead'
         : '/api/transformation-lead';
 
-      // Send to our server endpoint which will email watchdogpedro@gmail.com
+      // Send to our server endpoint which will email infoai@seekon.ai
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -77,7 +77,7 @@ const TransformationForm = ({ isOpen, onClose }) => {
       console.error('Form submission error:', error);
       setIsSubmitting(false);
       console.error('Full error details:', error);
-      alert('There was an error sending your message. Please try again or contact us directly at watchdogpedro@gmail.com');
+      alert('There was an error sending your message. Please try again or contact us directly at infoai@seekon.ai');
     }
   };
 
@@ -467,7 +467,7 @@ const TransformationForm = ({ isOpen, onClose }) => {
                 lineHeight: '1.4'
               }}>
                 By submitting this form, you agree to be contacted by our team about your transformation project. 
-                We'll send your request to <strong>watchdogpedro@gmail.com</strong> for immediate follow-up.
+                We'll send your request to <strong>infoai@seekon.ai</strong> for immediate follow-up.
               </p>
             </form>
           </>

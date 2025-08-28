@@ -68,8 +68,8 @@ const sendNotificationEmail = async (subject, htmlContent, formData) => {
       
       // Route different form types to different addresses
       if (subject.includes('TRANSFORMATION LEAD')) {
-        recipientEmail = 'sales@seekon.ai';
-        fromEmail = 'sales@seekon.ai';
+        recipientEmail = 'infoai@seekon.ai';
+        fromEmail = 'infoai@seekon.ai';
       } else if (subject.includes('CONSULTATION REQUEST')) {
         recipientEmail = 'infoai@seekon.ai';  // Testing if this email exists
         fromEmail = 'noreply@seekon.ai';
@@ -113,7 +113,7 @@ const sendNotificationEmail = async (subject, htmlContent, formData) => {
     // Gmail fallback routing  
     let recipientEmail = 'paul@seekon.ai';
     if (subject.includes('TRANSFORMATION LEAD')) {
-      recipientEmail = 'sales@seekon.ai';
+      recipientEmail = 'infoai@seekon.ai';
     } else if (subject.includes('CONSULTATION REQUEST')) {
       recipientEmail = 'infoai@seekon.ai';  // Testing if this email exists
     } else if (subject.includes('CONTACT FORM')) {
@@ -290,7 +290,7 @@ app.post('/api/transformation-lead', async (req, res) => {
       success: true, 
       message: 'Transformation request submitted successfully! We will contact you within 24 hours.',
       leadId: Date.now(),
-      notification: 'Lead saved to Google Sheets - watchdogpedro@gmail.com will be notified',
+      notification: 'Lead saved to Google Sheets - infoai@seekon.ai will be notified',
       emailSent: emailResult.success
     });
 
@@ -299,7 +299,7 @@ app.post('/api/transformation-lead', async (req, res) => {
     console.error('Error details:', error.response?.data || error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.',
+      message: 'Error processing request. Please try again or email infoai@seekon.ai directly.',
       debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
@@ -388,7 +388,7 @@ app.post('/api/consultation-request', async (req, res) => {
     console.error('Error details:', error.response?.data || error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Error processing request. Please try again or email watchdogpedro@gmail.com directly.',
+      message: 'Error processing request. Please try again or email infoai@seekon.ai directly.',
       debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
