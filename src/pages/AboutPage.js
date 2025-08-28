@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
   return (
@@ -98,9 +99,32 @@ const AboutPage = () => {
                 <p style={{ marginBottom: '2rem', opacity: 0.9 }}>
                   Let our three decades of marketing expertise guide your transition to LLM-optimized content.
                 </p>
-                <button className="btn btn-primary">
+                <Link 
+                  to="/audit-tool" 
+                  className="btn btn-primary" 
+                  style={{ 
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    background: 'white',
+                    color: '#667eea',
+                    padding: '1rem 2rem',
+                    borderRadius: '25px',
+                    fontWeight: 'bold',
+                    transition: 'all 0.3s ease',
+                    border: 'none',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 6px 20px rgba(255,255,255,0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = 'none';
+                  }}
+                >
                   🚀 Get Your Free Audit
-                </button>
+                </Link>
               </div>
             </div>
           </div>
