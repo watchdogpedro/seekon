@@ -11,6 +11,7 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [showConsultationForm, setShowConsultationForm] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +31,7 @@ const ContactPage = () => {
       const submissionData = {
         ...formData,
         timestamp: new Date().toISOString(),
-        source: 'SEEKON.AI Contact Form'
+        source: showConsultationForm ? 'SEEKON.AI Consultation Request' : 'SEEKON.AI Contact Form'
       };
 
       // Submit to our backend API
@@ -58,6 +59,10 @@ const ContactPage = () => {
           industry: '',
           message: ''
         });
+        // Close consultation modal if it was open
+        if (showConsultationForm) {
+          setTimeout(() => setShowConsultationForm(false), 2000);
+        }
       } else {
         throw new Error(result.message || 'Failed to submit contact form');
       }
@@ -338,7 +343,8 @@ const ContactPage = () => {
                   onMouseLeave={(e) => {
                     e.target.style.transform = 'translateY(0)';
                     e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
-                  }}>
+                  }}
+                  onClick={() => setShowConsultationForm(true)}>
                     Book Consultation
                   </button>
                 </div>
@@ -450,6 +456,231 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Consultation Form Modal */}
+      {showConsultationForm && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0,0,0,0.8)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 10000,
+          padding: '1rem'
+        }}>
+          <div style={{
+            background: 'white',
+            borderRadius: '20px',
+            maxWidth: '500px',
+            width: '100%',
+            maxHeight: '90vh',
+            overflow: 'auto',
+            position: 'relative'
+          }}>
+            {/* Close Button */}
+            <button
+              onClick={() => setShowConsultationForm(false)}
+              style={{
+                position: 'absolute',
+                top: '15px',
+                right: '20px',
+                background: 'none',
+                border: 'none',
+                fontSize: '24px',
+                cursor: 'pointer',
+                color: '#666',
+                zIndex: 1
+              }}
+            >
+              ×
+            </button>
+
+            {/* Header */}
+            <div style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              color: 'white',
+              padding: '2rem',
+              borderRadius: '20px 20px 0 0',
+              textAlign: 'center'
+            }}>
+              <h2 style={{ margin: 0, fontSize: '2rem' }}>📞 Book Your Consultation</h2>
+              <p style={{ margin: '0.5rem 0 0', opacity: 0.9 }}>
+                Let's discuss your AI optimization needs
+              </p>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} style={{ padding: '2rem' }}>
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: '#333', fontWeight: '600' }}>
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    transition: 'border-color 0.3s ease'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#667eea'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: '#333', fontWeight: '600' }}>
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    transition: 'border-color 0.3s ease'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#667eea'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: '#333', fontWeight: '600' }}>
+                  Company
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    transition: 'border-color 0.3s ease'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#667eea'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: '#333', fontWeight: '600' }}>
+                  Industry
+                </label>
+                <input
+                  type="text"
+                  name="industry"
+                  value={formData.industry}
+                  onChange={handleInputChange}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    transition: 'border-color 0.3s ease'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#667eea'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+
+              <div style={{ marginBottom: '2rem' }}>
+                <label style={{ display: 'block', marginBottom: '0.5rem', color: '#333', fontWeight: '600' }}>
+                  Tell us about your consultation needs
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows="4"
+                  placeholder="What specific AI optimization challenges are you facing? What would you like to discuss in our consultation?"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    border: '2px solid #e5e7eb',
+                    borderRadius: '8px',
+                    fontSize: '1rem',
+                    resize: 'vertical',
+                    fontFamily: 'inherit',
+                    transition: 'border-color 0.3s ease'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#667eea'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                style={{
+                  width: '100%',
+                  background: isSubmitting 
+                    ? 'linear-gradient(45deg, #9ca3af, #6b7280)' 
+                    : 'linear-gradient(45deg, #667eea, #764ba2)',
+                  color: 'white',
+                  border: 'none',
+                  padding: '1rem 2rem',
+                  borderRadius: '12px',
+                  fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 15px rgba(102, 126, 234, 0.4)'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isSubmitting) {
+                    e.target.style.transform = 'translateY(-2px)';
+                    e.target.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.6)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSubmitting) {
+                    e.target.style.transform = 'translateY(0)';
+                    e.target.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+                  }
+                }}
+              >
+                {isSubmitting ? (
+                  <>📞 Booking Consultation...</>
+                ) : (
+                  <>📞 Book My Consultation</>
+                )}
+              </button>
+
+              <p style={{ 
+                textAlign: 'center', 
+                color: '#666', 
+                fontSize: '0.9rem', 
+                marginTop: '1rem',
+                lineHeight: '1.4'
+              }}>
+                We'll send your consultation request to <strong>infoai@seekon.ai</strong> and get back to you within 24 hours.
+              </p>
+            </form>
+          </div>
+        </div>
+      )}
 
     </div>
   );
