@@ -15,6 +15,15 @@ function App() {
   return (
     <Router>
       <div className="App">
+        {/* Space-Tech Background Elements */}
+        <div className="tech-grid"></div>
+        <div className="orbital-ring orbital-ring-1"></div>
+        <div className="orbital-ring orbital-ring-2"></div>
+        <div className="geo-shape geo-triangle"></div>
+        <div className="geo-shape geo-diamond"></div>
+        <div className="rocket-trail"></div>
+        <div className="space-particles"></div>
+        
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
