@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import ResourcesPage from './pages/ResourcesPage';
 import KeySciencePage from './pages/KeySciencePage';
 import ServicesPage from './pages/ServicesPage';
 import AuditToolPage from './pages/AuditToolPage';
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/resources" element={<ResourcesPage />} />
           <Route path="/key-science" element={<KeySciencePage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/audit-tool" element={<AuditToolPage />} />

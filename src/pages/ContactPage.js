@@ -362,6 +362,46 @@ const ContactPage = () => {
                     </p>
                   </div>
                 </div>
+                
+                {/* Location Map */}
+                <div style={{
+                  background: '#f8f9fa',
+                  padding: '2rem',
+                  borderRadius: '15px'
+                }}>
+                  <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>🌍 Our Reach</h3>
+                  <div style={{
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    borderRadius: '10px',
+                    padding: '2rem',
+                    color: 'white',
+                    textAlign: 'center',
+                    position: 'relative',
+                    minHeight: '200px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}>
+                    <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌐</div>
+                    <h4 style={{ marginBottom: '1rem', fontSize: '1.2rem' }}>Global AI Optimization</h4>
+                    <p style={{ opacity: 0.9, maxWidth: '300px', lineHeight: '1.5' }}>
+                      Serving clients worldwide with cutting-edge LLM optimization and AI-ready SEO strategies
+                    </p>
+                    <div style={{
+                      marginTop: '1rem',
+                      display: 'flex',
+                      justifyContent: 'space-around',
+                      width: '100%',
+                      maxWidth: '200px'
+                    }}>
+                      <span style={{ fontSize: '1.5rem' }}>🇺🇸</span>
+                      <span style={{ fontSize: '1.5rem' }}>🇬🇧</span>
+                      <span style={{ fontSize: '1.5rem' }}>🇪🇺</span>
+                      <span style={{ fontSize: '1.5rem' }}>🇦🇺</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

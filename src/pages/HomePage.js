@@ -30,6 +30,9 @@ const HomePage = () => {
 
   return (
     <>
+      {/* Spacing for dropdown menu */}
+      <div style={{ height: '100px', backgroundColor: 'transparent' }}></div>
+      
       {/* Full-Width Banner Image */}
       <section className="hero-banner">
         <img 
@@ -44,7 +47,7 @@ const HomePage = () => {
         <div className="container">
           <div className="hero-content">
             <h1>
-              Where SEO Ends, AI Visibility Begins<br />
+              Be found by <span className="highlight">people and AI</span><br />
               <span className="jetpack-text">Jetpack Your Rankings</span>
             </h1>
             <p>
@@ -52,9 +55,12 @@ const HomePage = () => {
             </p>
             
             <div>
-              <Link to="/audit-tool" className="btn btn-primary" style={{ textDecoration: 'none' }}>
-                🔍 Get Free SEO & AI Audit
+              <Link to="/audit-tool" className="btn btn-primary btn-lg" style={{ textDecoration: 'none' }}>
+                🚀 Run Free Orbital Scan
               </Link>
+              <button className="btn btn-secondary btn-lg">
+                ▶️ Watch 90-sec Overview
+              </button>
             </div>
           </div>
         </div>
@@ -63,135 +69,90 @@ const HomePage = () => {
       {/* Features Section */}
       <section className="features">
         <div className="container">
-          <h2>How <span style={{color: '#667eea'}}>SeekON</span> Works</h2>
+          <h2>How <span className="text-cosmic">SeekON</span> Works</h2>
           
           <div className="features-grid">
             <div 
-              className="feature-card" 
+              className="feature-card animate-float" 
               onClick={openOrbitalExplainer}
               style={{ 
                 cursor: 'pointer',
-                background: 'linear-gradient(135deg, #faf8ff 0%, #f3f0ff 50%, #ede9fe 100%)',
-                border: '1px solid rgba(102, 126, 234, 0.1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-15px)';
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(102, 126, 234, 0.3)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, #f3f0ff 0%, #ede9fe 50%, #ddd6fe 100%)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, #faf8ff 0%, #f3f0ff 50%, #ede9fe 100%)';
+                animationDelay: '0s'
               }}
             >
-              <div className="feature-icon">🛰️</div>
+              <div className="feature-icon animate-float">🛰️</div>
               <h3>Orbital Scan</h3>
               <p>
                 Our AI crawls your site and analyzes entity clarity, content structure, 
                 internal linking, and schema markup.
               </p>
-              <div style={{
-                marginTop: '1rem',
-                color: '#667eea',
+              <div className="text-cosmic" style={{
+                marginTop: 'var(--space-lg)',
                 fontSize: '0.9rem',
                 fontWeight: '600',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.5rem'
+                gap: 'var(--space-xs)'
               }}>
                 <span>Click to learn how it works</span>
-                <span style={{ 
-                  transition: 'transform 0.3s ease',
-                  display: 'inline-block'
-                }}>→</span>
+                <span className="animate-float">→</span>
               </div>
             </div>
             
             <div 
-              className="feature-card"
+              className="feature-card animate-float"
               onClick={openCosmoBriefsExplainer}
               style={{ 
                 cursor: 'pointer',
-                background: 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%)',
-                border: '1px solid rgba(6, 182, 212, 0.1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-15px)';
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(6, 182, 212, 0.3)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 50%, #99f6e4 100%)';
+                animationDelay: '0.5s'
               }}
             >
-              <div className="feature-icon">📋</div>
+              <div className="feature-icon animate-float">📋</div>
               <h3>Cosmo Briefs</h3>
               <p>
                 AI-generated content briefs with entities, questions, sources, and 
                 structured outlines optimized for LLM retrieval.
               </p>
-              <div style={{
-                marginTop: '1rem',
-                color: '#06b6d4',
+              <div className="text-teal" style={{
+                marginTop: 'var(--space-lg)',
                 fontSize: '0.9rem',
                 fontWeight: '600',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.5rem'
+                gap: 'var(--space-xs)'
               }}>
                 <span>Click to learn how it works</span>
-                <span style={{ 
-                  transition: 'transform 0.3s ease',
-                  display: 'inline-block'
-                }}>→</span>
+                <span className="animate-float">→</span>
               </div>
             </div>
             
             <div 
-              className="feature-card"
+              className="feature-card animate-float"
               onClick={openHyperdriveExplainer}
               style={{ 
                 cursor: 'pointer',
-                background: 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%)',
-                border: '1px solid rgba(139, 92, 246, 0.1)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-15px)';
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(139, 92, 246, 0.3)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 50%, #d8b4fe 100%)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(-10px)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                e.currentTarget.style.background = 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%)';
+                animationDelay: '1s'
               }}
             >
-              <div className="feature-icon">⚡</div>
+              <div className="feature-icon animate-float">⚡</div>
               <h3>Hyperdrive Monitor</h3>
               <p>
                 Continuous tracking of freshness, internal links, rankings, and 
                 AI mention monitoring across LLM platforms.
               </p>
-              <div style={{
-                marginTop: '1rem',
-                color: '#8b5cf6',
+              <div className="text-blue" style={{
+                marginTop: 'var(--space-lg)',
                 fontSize: '0.9rem',
                 fontWeight: '600',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '0.5rem'
+                gap: 'var(--space-xs)'
               }}>
                 <span>Click to learn how it works</span>
-                <span style={{ 
-                  transition: 'transform 0.3s ease',
-                  display: 'inline-block'
-                }}>→</span>
+                <span className="animate-float">→</span>
               </div>
             </div>
           </div>

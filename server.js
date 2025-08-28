@@ -27,6 +27,20 @@ const sheets = google.sheets({ version: 'v4', auth });
 
 // Initialize email transporter
 const createTransporter = () => {
+  // Try Hostinger SMTP first
+  if (process.env.HOSTINGER_USER && process.env.HOSTINGER_PASS) {
+    return nodemailer.createTransport({
+      host: process.env.HOSTINGER_HOST,
+      port: parseInt(process.env.HOSTINGER_PORT),
+      secure: true, // SSL
+      auth: {
+        user: process.env.HOSTINGER_USER,
+        pass: process.env.HOSTINGER_PASS
+      }
+    });
+  }
+  
+  // Fallback to Gmail
   if (process.env.GMAIL_USER && process.env.GMAIL_PASS && process.env.GMAIL_PASS !== 'your_app_password_here') {
     return nodemailer.createTransport({
       service: 'gmail',
@@ -57,8 +71,8 @@ const sendNotificationEmail = async (subject, htmlContent, formData) => {
         recipientEmail = 'sales@seekon.ai';
         fromEmail = 'sales@seekon.ai';
       } else if (subject.includes('CONSULTATION REQUEST')) {
-        recipientEmail = 'sales@seekon.ai';  
-        fromEmail = 'sales@seekon.ai';
+        recipientEmail = 'infoai@seekon.ai';  // Testing if this email exists
+        fromEmail = 'noreply@seekon.ai';
       } else if (subject.includes('CONTACT FORM')) {
         recipientEmail = 'contact@seekon.ai';
         fromEmail = 'contact@seekon.ai';
@@ -98,23 +112,28 @@ const sendNotificationEmail = async (subject, htmlContent, formData) => {
   try {
     // Gmail fallback routing  
     let recipientEmail = 'paul@seekon.ai';
-    if (subject.includes('TRANSFORMATION LEAD') || subject.includes('CONSULTATION REQUEST')) {
+    if (subject.includes('TRANSFORMATION LEAD')) {
       recipientEmail = 'sales@seekon.ai';
+    } else if (subject.includes('CONSULTATION REQUEST')) {
+      recipientEmail = 'infoai@seekon.ai';  // Testing if this email exists
     } else if (subject.includes('CONTACT FORM')) {
       recipientEmail = 'contact@seekon.ai';
     }
 
+    const fromEmail = process.env.HOSTINGER_USER || process.env.GMAIL_USER;
     const mailOptions = {
-      from: process.env.GMAIL_USER,
+      from: `"SeekON AI" <${fromEmail}>`,
       to: recipientEmail,
       subject: subject,
       html: htmlContent,
-      replyTo: formData.email || process.env.GMAIL_USER
+      text: htmlContent.replace(/<[^>]*>/g, ''), // Add plain text version
+      replyTo: formData.email || fromEmail
     };
 
     const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Email sent via Gmail successfully:', result.messageId);
-    return { success: true, messageId: result.messageId, provider: 'Gmail' };
+    const provider = process.env.HOSTINGER_USER ? 'Hostinger' : 'Gmail';
+    console.log(`✅ Email sent via ${provider} successfully:`, result.messageId);
+    return { success: true, messageId: result.messageId, provider: provider };
   } catch (error) {
     console.error('❌ Gmail email sending failed:', error.message);
     return { success: false, error: error.message };

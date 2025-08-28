@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const location = useLocation();
 
   const toggleMobileMenu = () => {
@@ -26,12 +27,12 @@ const Navigation = () => {
           borderRadius: '20px',
           transition: 'all 0.3s ease',
           position: 'relative',
-          background: isActive ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
-          color: isActive ? 'white' : (isSpecial ? '#FF6B6B' : '#333')
+          background: isActive ? 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)' : 'transparent',
+          color: isActive ? 'white' : (isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)')
         }}
         onMouseEnter={(e) => {
           if (!isActive) {
-            e.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            e.target.style.background = 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)';
             e.target.style.color = 'white';
             e.target.style.transform = 'translateY(-2px)';
             e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
@@ -40,7 +41,7 @@ const Navigation = () => {
         onMouseLeave={(e) => {
           if (!isActive) {
             e.target.style.background = 'transparent';
-            e.target.style.color = isSpecial ? '#FF6B6B' : '#333';
+            e.target.style.color = isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)';
             e.target.style.transform = 'translateY(0)';
             e.target.style.boxShadow = 'none';
           }
@@ -66,20 +67,20 @@ const Navigation = () => {
           borderRadius: '10px',
           margin: '0.25rem 0',
           transition: 'all 0.3s ease',
-          background: isActive ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
-          color: isActive ? 'white' : (isSpecial ? '#FF6B6B' : '#333'),
+          background: isActive ? 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)' : 'transparent',
+          color: isActive ? 'white' : (isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)'),
           display: 'block'
         }}
         onMouseEnter={(e) => {
           if (!isActive) {
-            e.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+            e.target.style.background = 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)';
             e.target.style.color = 'white';
           }
         }}
         onMouseLeave={(e) => {
           if (!isActive) {
             e.target.style.background = 'transparent';
-            e.target.style.color = isSpecial ? '#FF6B6B' : '#333';
+            e.target.style.color = isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)';
           }
         }}
       >
@@ -105,7 +106,7 @@ const Navigation = () => {
         <Link to="/" style={{
           fontSize: '1.5rem',
           fontWeight: 'bold',
-          color: '#667eea',
+          color: 'var(--cosmic-red)',
           textDecoration: 'none'
         }} onClick={closeMobileMenu}>
           SeekON.AI
@@ -117,7 +118,24 @@ const Navigation = () => {
           gap: '1rem'
         }} className="desktop-nav">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
+          
+          <div className="dropdown">
+            <span style={{
+              fontWeight: '500',
+              padding: '0.5rem 1rem',
+              borderRadius: '20px',
+              transition: 'all 0.3s ease',
+              color: 'var(--deep-space)',
+              cursor: 'pointer',
+              userSelect: 'none',
+              display: 'inline-block'
+            }}>About ▼</span>
+            <div className="dropdown-content">
+              <Link to="/about">About Us</Link>
+              <Link to="/resources">📚 Resources</Link>
+            </div>
+          </div>
+          
           <NavLink to="/key-science">Key Science</NavLink>
           <NavLink to="/services">Services</NavLink>
           <NavLink to="/audit-tool" isSpecial>🔍 Free Audit</NavLink>
@@ -156,6 +174,7 @@ const Navigation = () => {
         }}>
           <MobileNavLink to="/">Home</MobileNavLink>
           <MobileNavLink to="/about">About</MobileNavLink>
+          <MobileNavLink to="/resources">📚 Resources</MobileNavLink>
           <MobileNavLink to="/key-science">Key Science</MobileNavLink>
           <MobileNavLink to="/services">Services</MobileNavLink>
           <MobileNavLink to="/audit-tool" isSpecial>🔍 Free Audit</MobileNavLink>
