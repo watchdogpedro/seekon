@@ -90,15 +90,15 @@ body {
   padding: 0 var(--space-md);
 }
 
-/* Hero Section with Cosmic Styling */
+/* Hero Section with White Background */
 .hero {
   padding: var(--space-3xl) 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
-  background: linear-gradient(135deg, var(--cosmic-red) 0%, var(--deep-space) 50%, var(--space-teal) 100%);
+  color: var(--deep-space);
+  background: white;
   margin-top: 2rem;
   position: relative;
   z-index: 1;

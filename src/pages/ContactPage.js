@@ -351,8 +351,32 @@ const ContactPage = () => {
                 }}>
                   <h3 style={{ color: '#667eea', marginBottom: '1rem' }}>📧 Direct Contact</h3>
                   <div style={{ color: '#666' }}>
-                    <p style={{ marginBottom: '0.5rem' }}>
-                      <strong>Email:</strong> hello@seekon.ai
+                    <div style={{ marginBottom: '1rem' }}>
+                      <strong>Email:</strong>
+                      <div style={{
+                        display: 'inline-block',
+                        marginLeft: '10px',
+                        padding: '8px 15px',
+                        background: 'linear-gradient(135deg, #E9424E, #00D4AA)',
+                        borderRadius: '5px',
+                        fontFamily: 'monospace',
+                        fontSize: '0.95rem',
+                        color: 'white',
+                        fontWeight: 'bold',
+                        letterSpacing: '0.5px',
+                        border: '2px solid #fff',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                      }}>
+                        infoai@seekon.ai
+                      </div>
+                    </div>
+                    <p style={{ 
+                      fontSize: '0.85rem', 
+                      fontStyle: 'italic', 
+                      color: '#888', 
+                      marginBottom: '1rem' 
+                    }}>
+                      📝 Please type the email address above (anti-spam protection)
                     </p>
                     <p style={{ marginBottom: '0.5rem' }}>
                       <strong>Response time:</strong> Within 24 hours
