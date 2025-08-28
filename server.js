@@ -66,16 +66,16 @@ const sendNotificationEmail = async (subject, htmlContent, formData) => {
       let recipientEmail = 'paul@seekon.ai'; // Your main inbox
       let fromEmail = 'noreply@seekon.ai';
       
-      // Route different form types to different addresses
+      // Route all form types to infoai@seekon.ai
       if (subject.includes('TRANSFORMATION LEAD')) {
         recipientEmail = 'infoai@seekon.ai';
         fromEmail = 'infoai@seekon.ai';
       } else if (subject.includes('CONSULTATION REQUEST')) {
-        recipientEmail = 'infoai@seekon.ai';  // Testing if this email exists
+        recipientEmail = 'infoai@seekon.ai';
         fromEmail = 'noreply@seekon.ai';
       } else if (subject.includes('CONTACT FORM')) {
-        recipientEmail = 'contact@seekon.ai';
-        fromEmail = 'contact@seekon.ai';
+        recipientEmail = 'infoai@seekon.ai';
+        fromEmail = 'infoai@seekon.ai';
       }
 
       const msg = {
@@ -110,14 +110,14 @@ const sendNotificationEmail = async (subject, htmlContent, formData) => {
   }
 
   try {
-    // Gmail fallback routing  
-    let recipientEmail = 'paul@seekon.ai';
+    // Gmail fallback routing - all forms go to infoai@seekon.ai
+    let recipientEmail = 'infoai@seekon.ai';
     if (subject.includes('TRANSFORMATION LEAD')) {
       recipientEmail = 'infoai@seekon.ai';
     } else if (subject.includes('CONSULTATION REQUEST')) {
-      recipientEmail = 'infoai@seekon.ai';  // Testing if this email exists
+      recipientEmail = 'infoai@seekon.ai';
     } else if (subject.includes('CONTACT FORM')) {
-      recipientEmail = 'contact@seekon.ai';
+      recipientEmail = 'infoai@seekon.ai';
     }
 
     const fromEmail = process.env.HOSTINGER_USER || process.env.GMAIL_USER;
@@ -379,7 +379,7 @@ app.post('/api/consultation-request', async (req, res) => {
       success: true, 
       message: 'Consultation request submitted successfully! We will contact you within 24 hours.',
       requestId: Date.now(),
-      notification: 'Request saved to Google Sheets - watchdogpedro@gmail.com will be notified',
+      notification: 'Request saved to Google Sheets - infoai@seekon.ai will be notified',
       emailSent: emailResult.success
     });
 
@@ -444,10 +444,15 @@ app.post('/api/contact-form', async (req, res) => {
       console.log('✅ Contact form saved to Sheet1 successfully as fallback');
     }
 
-    // Send email notification
-    const emailSubject = `💬 NEW CONTACT FORM - ${contactData.name} from ${contactData.company || 'Unknown Company'}`;
+    // Determine if this is a consultation request vs regular contact form
+    const isConsultationRequest = contactData.source && contactData.source.includes('Consultation Request');
+    
+    // Send email notification with appropriate subject
+    const emailSubject = isConsultationRequest 
+      ? `📞 NEW CONSULTATION REQUEST - ${contactData.name} from ${contactData.company || 'Unknown Company'}`
+      : `💬 NEW CONTACT FORM - ${contactData.name} from ${contactData.company || 'Unknown Company'}`;
     const emailContent = `
-      <h2>New Contact Form Submission</h2>
+      <h2>${isConsultationRequest ? 'New Consultation Request' : 'New Contact Form Submission'}</h2>
       <p><strong>Timestamp:</strong> ${contactData.timestamp}</p>
       <p><strong>Name:</strong> ${contactData.name}</p>
       <p><strong>Email:</strong> ${contactData.email}</p>
@@ -469,7 +474,7 @@ app.post('/api/contact-form', async (req, res) => {
       success: true, 
       message: 'Thanks for connecting! We will get right back to you within 24 hours.',
       submissionId: Date.now(),
-      notification: 'Contact form saved to Google Sheets - watchdogpedro@gmail.com will be notified',
+      notification: 'Contact form saved to Google Sheets - infoai@seekon.ai will be notified',
       emailSent: emailResult.success
     });
 
@@ -478,7 +483,7 @@ app.post('/api/contact-form', async (req, res) => {
     console.error('Error details:', error.response?.data || error.message);
     res.status(500).json({ 
       success: false, 
-      message: 'Error processing your message. Please try again or email watchdogpedro@gmail.com directly.',
+      message: 'Error processing your message. Please try again or email infoai@seekon.ai directly.',
       debug: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }

@@ -515,6 +515,35 @@ const ContactPage = () => {
 
             {/* Form */}
             <form onSubmit={handleSubmit} style={{ padding: '2rem' }}>
+              {submitStatus === 'success' && (
+                <div style={{
+                  background: '#4CAF50',
+                  color: 'white',
+                  padding: '1.5rem',
+                  borderRadius: '15px',
+                  textAlign: 'center',
+                  marginBottom: '1rem',
+                  fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                  boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)'
+                }}>
+                  🎉 Thanks for connecting! We will get right back to you within 24 hours.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div style={{
+                  background: '#f44336',
+                  color: 'white',
+                  padding: '1rem',
+                  borderRadius: '10px',
+                  textAlign: 'center',
+                  marginBottom: '1rem'
+                }}>
+                  ❌ Something went wrong. Please try again.
+                </div>
+              )}
+              
               <div style={{ marginBottom: '1rem' }}>
                 <label style={{ display: 'block', marginBottom: '0.5rem', color: '#333', fontWeight: '600' }}>
                   Name *
