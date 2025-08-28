@@ -338,7 +338,7 @@ const KeySciencePage = () => {
                         e.currentTarget.style.transform = 'translateY(-8px) scale(1)';
                         e.currentTarget.style.boxShadow = `0 12px 40px ${colorScheme.bg}40`;
                         e.currentTarget.querySelector('.card-content').style.background = `${colorScheme.bg}08`;
-                        e.currentTarget.querySelector('.card-header').style.background = colorScheme.accent;
+                        e.currentTarget.querySelector('.card-header').style.background = `${colorScheme.accent}CC`;
                         e.currentTarget.querySelector('.card-description').style.opacity = '1';
                         e.currentTarget.querySelector('.card-description').style.maxHeight = '200px';
                       }
@@ -348,7 +348,7 @@ const KeySciencePage = () => {
                         e.currentTarget.style.transform = 'translateY(0) scale(1)';
                         e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
                         e.currentTarget.querySelector('.card-content').style.background = 'white';
-                        e.currentTarget.querySelector('.card-header').style.background = colorScheme.bg;
+                        e.currentTarget.querySelector('.card-header').style.background = `${colorScheme.bg}CC`;
                         e.currentTarget.querySelector('.card-description').style.opacity = '0.7';
                         e.currentTarget.querySelector('.card-description').style.maxHeight = '60px';
                       }
@@ -357,7 +357,8 @@ const KeySciencePage = () => {
                     <div 
                       className="card-header"
                       style={{
-                        background: colorScheme.bg,
+                        background: `${colorScheme.bg}CC`,
+                        backdropFilter: 'blur(10px)',
                         color: 'white',
                         padding: '1rem',
                         display: 'flex',
