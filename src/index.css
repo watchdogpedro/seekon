@@ -453,7 +453,7 @@ body {
   display: none !important;
 }
 
-/* Dropdown Menu CSS - Simple and Working */
+/* Dropdown Menu CSS - Improved with better hover range */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -462,18 +462,31 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 5px);
   left: 0;
   background-color: white;
   min-width: 180px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1000;
   border-radius: 10px;
-  overflow: hidden;
-  margin-top: 0.25rem;
+  overflow: visible;
 }
 
-.dropdown:hover .dropdown-content {
+/* Create invisible bridge between dropdown trigger and content */
+.dropdown-content::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: transparent;
+  z-index: 1001;
+}
+
+/* Show dropdown on hover of both trigger and content */
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
   display: block;
 }
 
@@ -808,32 +821,6 @@ body::after {
   }
 }
 
-/* Contact link specific styling for navigation */
-.contact-nav-link {
-  position: relative;
-  overflow: visible !important;
-}
-
-.contact-nav-link::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  border: 2px solid #E9424E;
-  border-radius: 20px;
-  opacity: 0.6;
-  z-index: -1;
-  animation: contact-ring-pulse 2.5s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.contact-nav-link:hover::before {
-  animation: contact-ring-pulse-fast 1.2s ease-in-out infinite;
-  border-color: #D73748;
-  opacity: 0.8;
-}
 
 /* Hide background elements on mobile for performance */
 @media (max-width: 768px) {
