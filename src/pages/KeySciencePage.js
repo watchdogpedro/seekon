@@ -143,16 +143,16 @@ const KeySciencePage = () => {
         
         .cloud {
           position: absolute;
-          background: rgba(255,255,255,0.4);
+          background: rgba(255,255,255,0.6);
           border-radius: 50px;
-          opacity: 0.7;
+          opacity: 0.8;
         }
         
         .cloud:before,
         .cloud:after {
           content: '';
           position: absolute;
-          background: rgba(255,255,255,0.4);
+          background: rgba(255,255,255,0.6);
           border-radius: 50px;
         }
         
@@ -224,9 +224,124 @@ const KeySciencePage = () => {
           right: 20px;
         }
         
+        .cloud4 {
+          width: 90px;
+          height: 45px;
+          top: 40%;
+          left: -12%;
+          animation: float-right 30s infinite linear;
+          animation-delay: -8s;
+        }
+        
+        .cloud4:before {
+          width: 55px;
+          height: 55px;
+          top: -28px;
+          left: 12px;
+        }
+        
+        .cloud4:after {
+          width: 65px;
+          height: 35px;
+          top: -18px;
+          right: 12px;
+        }
+        
+        .cloud5 {
+          width: 110px;
+          height: 55px;
+          top: 60%;
+          left: -18%;
+          animation: float-right 40s infinite linear;
+          animation-delay: -12s;
+        }
+        
+        .cloud5:before {
+          width: 65px;
+          height: 65px;
+          top: -32px;
+          left: 18px;
+        }
+        
+        .cloud5:after {
+          width: 75px;
+          height: 42px;
+          top: -22px;
+          right: 18px;
+        }
+        
+        .cloud6 {
+          width: 75px;
+          height: 38px;
+          top: 75%;
+          left: -8%;
+          animation: float-right 28s infinite linear;
+          animation-delay: -20s;
+        }
+        
+        .cloud6:before {
+          width: 48px;
+          height: 48px;
+          top: -24px;
+          left: 8px;
+        }
+        
+        .cloud6:after {
+          width: 58px;
+          height: 32px;
+          top: -14px;
+          right: 8px;
+        }
+        
+        .cloud7 {
+          width: 95px;
+          height: 48px;
+          top: 30%;
+          left: -15%;
+          animation: float-right 38s infinite linear;
+          animation-delay: -25s;
+        }
+        
+        .cloud7:before {
+          width: 58px;
+          height: 58px;
+          top: -29px;
+          left: 15px;
+        }
+        
+        .cloud7:after {
+          width: 68px;
+          height: 38px;
+          top: -19px;
+          right: 15px;
+        }
+        
+        .cloud8 {
+          width: 85px;
+          height: 42px;
+          top: 85%;
+          left: -10%;
+          animation: float-right 32s infinite linear;
+          animation-delay: -30s;
+        }
+        
+        .cloud8:before {
+          width: 52px;
+          height: 52px;
+          top: -26px;
+          left: 10px;
+        }
+        
+        .cloud8:after {
+          width: 62px;
+          height: 36px;
+          top: -16px;
+          right: 10px;
+        }
+        
         @keyframes float-right {
-          0% { transform: translateX(-100px); }
-          100% { transform: translateX(calc(100vw + 100px)); }
+          0% { transform: translateX(-120px); }
+          100% { transform: translateX(calc(100vw + 120px)); }
         }
       `}</style>
       
@@ -235,6 +350,11 @@ const KeySciencePage = () => {
         <div className="cloud cloud1"></div>
         <div className="cloud cloud2"></div>
         <div className="cloud cloud3"></div>
+        <div className="cloud cloud4"></div>
+        <div className="cloud cloud5"></div>
+        <div className="cloud cloud6"></div>
+        <div className="cloud cloud7"></div>
+        <div className="cloud cloud8"></div>
       </div>
       <section style={{ padding: '4rem 0', position: 'relative', zIndex: 10 }}>
         <div className="container">
