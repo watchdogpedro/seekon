@@ -159,7 +159,7 @@ const Navigation = () => {
           <NavLink to="/services">Services</NavLink>
           <NavLink to="/audit-tool" isSpecial className="contact-button">🔍 Free Audit</NavLink>
           <NavLink to="/case-studies">Case Studies</NavLink>
-          <NavLink to="/contact" className="contact-button">Contact</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -198,7 +198,7 @@ const Navigation = () => {
           <MobileNavLink to="/services">Services</MobileNavLink>
           <MobileNavLink to="/audit-tool" isSpecial className="contact-button">🔍 Free Audit</MobileNavLink>
           <MobileNavLink to="/case-studies">Case Studies</MobileNavLink>
-          <MobileNavLink to="/contact" className="contact-button">Contact</MobileNavLink>
+          <MobileNavLink to="/contact">Contact</MobileNavLink>
         </div>
       </div>
     </nav>
