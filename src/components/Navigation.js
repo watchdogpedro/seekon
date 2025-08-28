@@ -26,12 +26,12 @@ const Navigation = () => {
           borderRadius: '20px',
           transition: 'all 0.3s ease',
           position: 'relative',
-          background: isActive ? 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)' : 'transparent',
-          color: isActive ? 'white' : (isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)')
+          background: isActive ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
+          color: isActive ? 'white' : (isSpecial ? '#667eea' : 'var(--deep-space)')
         }}
         onMouseEnter={(e) => {
           if (!isActive) {
-            e.target.style.background = 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)';
+            e.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
             e.target.style.color = 'white';
             e.target.style.transform = 'translateY(-2px)';
             e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
@@ -40,7 +40,7 @@ const Navigation = () => {
         onMouseLeave={(e) => {
           if (!isActive) {
             e.target.style.background = 'transparent';
-            e.target.style.color = isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)';
+            e.target.style.color = isSpecial ? '#667eea' : 'var(--deep-space)';
             e.target.style.transform = 'translateY(0)';
             e.target.style.boxShadow = 'none';
           }
@@ -66,20 +66,20 @@ const Navigation = () => {
           borderRadius: '10px',
           margin: '0.25rem 0',
           transition: 'all 0.3s ease',
-          background: isActive ? 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)' : 'transparent',
-          color: isActive ? 'white' : (isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)'),
+          background: isActive ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
+          color: isActive ? 'white' : (isSpecial ? '#667eea' : 'var(--deep-space)'),
           display: 'block'
         }}
         onMouseEnter={(e) => {
           if (!isActive) {
-            e.target.style.background = 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)';
+            e.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
             e.target.style.color = 'white';
           }
         }}
         onMouseLeave={(e) => {
           if (!isActive) {
             e.target.style.background = 'transparent';
-            e.target.style.color = isSpecial ? 'var(--cosmic-red)' : 'var(--deep-space)';
+            e.target.style.color = isSpecial ? '#667eea' : 'var(--deep-space)';
           }
         }}
       >
@@ -105,7 +105,7 @@ const Navigation = () => {
         <Link to="/" style={{
           fontSize: '1.5rem',
           fontWeight: 'bold',
-          color: 'var(--cosmic-red)',
+          color: '#667eea',
           textDecoration: 'none'
         }} onClick={closeMobileMenu}>
           SeekON.AI
@@ -125,14 +125,14 @@ const Navigation = () => {
               borderRadius: '20px',
               transition: 'all 0.3s ease',
               color: (location.pathname === '/about' || location.pathname === '/resources') ? 'white' : 'var(--deep-space)',
-              background: (location.pathname === '/about' || location.pathname === '/resources') ? 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)' : 'transparent',
+              background: (location.pathname === '/about' || location.pathname === '/resources') ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
               cursor: 'pointer',
               userSelect: 'none',
               display: 'inline-block'
             }}
             onMouseEnter={(e) => {
               if (location.pathname !== '/about' && location.pathname !== '/resources') {
-                e.target.style.background = 'linear-gradient(135deg, var(--cosmic-red) 0%, var(--space-teal) 100%)';
+                e.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
                 e.target.style.color = 'white';
                 e.target.style.transform = 'translateY(-2px)';
                 e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.3)';
