@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   const location = useLocation();
 
   const toggleMobileMenu = () => {

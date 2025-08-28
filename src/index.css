@@ -346,6 +346,11 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
 .animate-orbit {
   animation: orbit 20s linear infinite;
 }

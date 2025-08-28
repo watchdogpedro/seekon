@@ -65,9 +65,78 @@ const ResourcesPage = () => {
   ];
 
   const handleDownload = (resource) => {
-    // In a real implementation, this would trigger the actual download
-    console.log(`Downloading: ${resource.title}`);
-    alert(`Download started: ${resource.title} (${resource.fileType})`);
+    // Open PDF in new window for viewing/printing
+    if (resource.pdfUrl) {
+      window.open(resource.pdfUrl, '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes,menubar=yes,toolbar=yes');
+    } else {
+      // For demo purposes, create a simple PDF viewer
+      const pdfContent = `
+        <html>
+          <head>
+            <title>${resource.title} - SeekON AI</title>
+            <style>
+              body { font-family: Arial, sans-serif; padding: 40px; line-height: 1.6; max-width: 800px; margin: 0 auto; }
+              h1 { color: #E9424E; border-bottom: 3px solid #00D4AA; padding-bottom: 10px; }
+              .header { background: linear-gradient(135deg, #E9424E, #00D4AA); color: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; }
+              .content { background: #f8f9fa; padding: 30px; border-radius: 10px; margin-bottom: 30px; }
+              .footer { text-align: center; color: #666; font-size: 0.9em; }
+              @media print { .no-print { display: none; } }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <h1>${resource.title}</h1>
+              <p><strong>Category:</strong> ${resource.category} | <strong>Date:</strong> ${resource.date}</p>
+            </div>
+            
+            <div class="content">
+              <p><strong>Description:</strong> ${resource.description}</p>
+              
+              <h2>Overview</h2>
+              <p>This comprehensive guide provides detailed insights into ${resource.title.toLowerCase()}. Our research team has compiled the most current and actionable information available in the industry.</p>
+              
+              <h2>Key Findings</h2>
+              <ul>
+                <li>AI search behavior is fundamentally different from traditional search</li>
+                <li>Entity-based optimization outperforms keyword-based approaches</li>
+                <li>Structured data and schema markup are critical for AI visibility</li>
+                <li>Citation-worthy content drives AI recommendation algorithms</li>
+              </ul>
+              
+              <h2>Implementation Steps</h2>
+              <ol>
+                <li><strong>Audit Current State:</strong> Assess your website's AI readiness</li>
+                <li><strong>Optimize Entity Definitions:</strong> Clearly define your business, products, and services</li>
+                <li><strong>Implement Structured Data:</strong> Add comprehensive schema markup</li>
+                <li><strong>Create Citation-Worthy Content:</strong> Develop authoritative, fact-based content</li>
+                <li><strong>Monitor AI Visibility:</strong> Track mentions in AI responses</li>
+              </ol>
+              
+              <h2>Measuring Success</h2>
+              <p>Success in AI search optimization is measured by:</p>
+              <ul>
+                <li>Frequency of citations in AI responses</li>
+                <li>Accuracy of AI-generated information about your business</li>
+                <li>Improved entity recognition across AI platforms</li>
+                <li>Increased qualified traffic from AI-powered searches</li>
+              </ul>
+            </div>
+            
+            <div class="footer">
+              <p><strong>SeekON AI</strong> | Advanced AI Search Optimization | seekon.ai</p>
+              <p class="no-print">
+                <button onclick="window.print()" style="background: #E9424E; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px;">🖨️ Print This Document</button>
+                <button onclick="window.close()" style="background: #666; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">✕ Close Window</button>
+              </p>
+            </div>
+          </body>
+        </html>
+      `;
+      
+      const newWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes,menubar=yes,toolbar=yes');
+      newWindow.document.write(pdfContent);
+      newWindow.document.close();
+    }
   };
 
   return (

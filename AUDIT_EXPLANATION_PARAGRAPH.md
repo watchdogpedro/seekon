@@ -1,0 +1,8 @@
+# How Our AI Searchability Audit Works
+
+**Our Orbital Scan combines traditional SEO analysis with cutting-edge AI visibility testing.** We crawl your website to map its structure, then evaluate both classic ranking factors (title tags, content quality, technical performance) and revolutionary AI-readiness metrics (entity clarity, structured data, citation potential). Most importantly, we simulate how major AI systems like ChatGPT and Perplexity actually interact with your content - testing whether they cite your business when answering relevant questions. The result is a comprehensive score across four dimensions: Overall AI Readiness, Classic SEO, AI Search Visibility, and Technical Foundation. Unlike traditional audits that focus solely on Google rankings, our methodology prepares your website for the AI-powered search landscape where assistants directly answer questions, often without sending users to your site. You'll receive prioritized, actionable recommendations that optimize for both current search engines and the emerging world of AI-driven discovery.
+
+---
+
+**Shorter Version for Website:**
+Our Orbital Scan uses a proprietary 4-stage process to evaluate your website's readiness for AI-powered search. We crawl your site, analyze traditional SEO factors, then simulate how AI systems like ChatGPT and Perplexity interact with your content. The key differentiator: we actually test whether AI assistants cite your business when answering relevant questions. You'll receive scores for Overall AI Readiness, Classic SEO, AI Search Visibility, and Technical Foundation - plus prioritized recommendations that work for both current search engines and the AI-driven future.
