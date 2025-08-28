@@ -302,27 +302,15 @@ const KeySciencePage = () => {
               ref={containerRef}
               style={{ 
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                gap: '1.5rem',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gap: '1.2rem',
                 position: 'relative',
                 zIndex: 10,
                 overflow: 'visible'
               }}>
               {keyPoints.map((point, index) => {
-                const colors = [
-                  { bg: '#667eea', accent: '#4f46e5' },
-                  { bg: '#06b6d4', accent: '#0891b2' },
-                  { bg: '#10b981', accent: '#059669' },
-                  { bg: '#f59e0b', accent: '#d97706' },
-                  { bg: '#8b5cf6', accent: '#7c3aed' },
-                  { bg: '#ef4444', accent: '#dc2626' },
-                  { bg: '#ec4899', accent: '#db2777' },
-                  { bg: '#84cc16', accent: '#65a30d' },
-                  { bg: '#f97316', accent: '#ea580c' },
-                  { bg: '#6366f1', accent: '#4f46e5' }
-                ];
-                
-                const colorScheme = colors[index % colors.length];
+                // Use the same cyan color scheme for all boxes (from "How People Really Talk to AI")
+                const colorScheme = { bg: '#06b6d4', accent: '#0891b2' };
                 
                 const isExpanded = expandedCard === index;
                 
@@ -371,15 +359,15 @@ const KeySciencePage = () => {
                       style={{
                         background: colorScheme.bg,
                         color: 'white',
-                        padding: '1.5rem',
+                        padding: '1rem',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '1rem',
+                        gap: '0.75rem',
                         transition: 'all 0.3s ease'
                       }}
                     >
                       <div style={{ 
-                        fontSize: '2.5rem',
+                        fontSize: '2rem',
                         flexShrink: 0,
                         filter: 'drop-shadow(2px 2px 4px rgba(0,0,0,0.2))'
                       }}>
@@ -388,7 +376,7 @@ const KeySciencePage = () => {
                       
                       <div>
                         <h3 style={{ 
-                          fontSize: '1.25rem', 
+                          fontSize: '1.1rem', 
                           fontWeight: '700',
                           margin: 0,
                           lineHeight: '1.2'
@@ -412,7 +400,7 @@ const KeySciencePage = () => {
                     <div 
                       className="card-content"
                       style={{
-                        padding: '1.5rem',
+                        padding: '1rem',
                         background: 'white',
                         transition: 'all 0.3s ease'
                       }}
@@ -423,7 +411,7 @@ const KeySciencePage = () => {
                           lineHeight: '1.6',
                           color: '#4b5563',
                           margin: 0,
-                          fontSize: isExpanded ? '1.1rem' : '0.95rem',
+                          fontSize: isExpanded ? '1rem' : '0.9rem',
                           opacity: isExpanded ? '1' : '0.7',
                           maxHeight: isExpanded ? 'none' : '60px',
                           overflow: isExpanded ? 'visible' : 'hidden',
