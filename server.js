@@ -29,10 +29,11 @@ const sheets = google.sheets({ version: 'v4', auth });
 const createTransporter = () => {
   // Try Hostinger SMTP first
   if (process.env.HOSTINGER_USER && process.env.HOSTINGER_PASS) {
+    const port = parseInt(process.env.HOSTINGER_PORT);
     return nodemailer.createTransport({
       host: process.env.HOSTINGER_HOST,
-      port: parseInt(process.env.HOSTINGER_PORT),
-      secure: true, // SSL
+      port: port,
+      secure: port === 465, // SSL for 465, STARTTLS for 587
       auth: {
         user: process.env.HOSTINGER_USER,
         pass: process.env.HOSTINGER_PASS
