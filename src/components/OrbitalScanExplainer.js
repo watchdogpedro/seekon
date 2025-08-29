@@ -146,7 +146,7 @@ const OrbitalScanExplainer = ({ isOpen, onClose }) => {
                   display: 'flex',
                   gap: '1rem',
                   padding: '1.5rem',
-                  background: '#f8f9fa',
+                  background: 'white',
                   borderRadius: '16px',
                   border: '1px solid #e9ecef'
                 }}>
@@ -211,7 +211,7 @@ const OrbitalScanExplainer = ({ isOpen, onClose }) => {
             </h3>
             
             <div style={{
-              background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+              background: 'white',
               padding: '1.5rem',
               borderRadius: '16px',
               border: '1px solid #dee2e6'

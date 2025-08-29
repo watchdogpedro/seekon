@@ -338,7 +338,7 @@ const AuditToolPage = () => {
           font-size: 1.6rem;
           font-weight: 600;
           transition: all 0.4s ease;
-          background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+          background: white;
           box-shadow: 
             0 8px 25px rgba(0,0,0,0.1),
             inset 0 2px 4px rgba(255,255,255,0.9),
@@ -655,7 +655,7 @@ const AuditToolPage = () => {
         }
 
         .ai-simulation {
-          background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+          background: white;
           border: 2px solid #e5e7eb;
           border-radius: 16px;
           padding: 32px;

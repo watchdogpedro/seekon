@@ -178,7 +178,7 @@ const ServicesPage = () => {
                   <div style={{
                     width: '100%',
                     padding: '1rem',
-                    background: '#f8f9fa',
+                    background: 'white',
                     color: '#666',
                     border: '2px solid #e5e7eb',
                     borderRadius: '50px',
@@ -212,7 +212,7 @@ const ServicesPage = () => {
           </div>
           
           <div style={{
-            background: '#f8f9fa',
+            background: 'white',
             padding: '3rem',
             borderRadius: '15px',
             textAlign: 'center'
