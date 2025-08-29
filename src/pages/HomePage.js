@@ -69,18 +69,41 @@ const HomePage = () => {
       {/* Features Section */}
       <section className="features">
         <div className="container">
-          <h2>How <span className="text-cosmic">SeekON</span> Works</h2>
+          <h2 style={{
+            fontSize: '3rem',
+            textAlign: 'center',
+            marginBottom: '3rem',
+            background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFEAA7)',
+            backgroundSize: '300% 300%',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: 'none',
+            position: 'relative',
+            display: 'inline-block',
+            width: '100%'
+          }}>
+            🚀 How <span style={{ color: '#FF6B6B' }}>SeekON</span> Launches Your Visibility 🌟
+          </h2>
           
           <div className="features-grid">
             <div 
-              className="feature-card animate-float" 
+              className="feature-card" 
               onClick={openOrbitalExplainer}
               style={{ 
                 cursor: 'pointer',
-                animationDelay: '0s'
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '';
               }}
             >
-              <div className="feature-icon animate-float">🛰️</div>
+              <div className="feature-icon">🛰️</div>
               <h3>Orbital Scan</h3>
               <p>
                 Our AI crawls your site and analyzes entity clarity, content structure, 
@@ -96,19 +119,27 @@ const HomePage = () => {
                 gap: 'var(--space-xs)'
               }}>
                 <span>Click to learn how it works</span>
-                <span className="animate-float">→</span>
+                <span>🚀</span>
               </div>
             </div>
             
             <div 
-              className="feature-card animate-float"
+              className="feature-card"
               onClick={openCosmoBriefsExplainer}
               style={{ 
                 cursor: 'pointer',
-                animationDelay: '0.5s'
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '';
               }}
             >
-              <div className="feature-icon animate-float">📋</div>
+              <div className="feature-icon">🛸</div>
               <h3>Cosmo Briefs</h3>
               <p>
                 AI-generated content briefs with entities, questions, sources, and 
@@ -124,19 +155,27 @@ const HomePage = () => {
                 gap: 'var(--space-xs)'
               }}>
                 <span>Click to learn how it works</span>
-                <span className="animate-float">→</span>
+                <span>🌟</span>
               </div>
             </div>
             
             <div 
-              className="feature-card animate-float"
+              className="feature-card"
               onClick={openHyperdriveExplainer}
               style={{ 
                 cursor: 'pointer',
-                animationDelay: '1s'
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '';
               }}
             >
-              <div className="feature-icon animate-float">⚡</div>
+              <div className="feature-icon">🌌</div>
               <h3>Hyperdrive Monitor</h3>
               <p>
                 Continuous tracking of freshness, internal links, rankings, and 
@@ -152,7 +191,7 @@ const HomePage = () => {
                 gap: 'var(--space-xs)'
               }}>
                 <span>Click to learn how it works</span>
-                <span className="animate-float">→</span>
+                <span>⭐</span>
               </div>
             </div>
           </div>
@@ -222,7 +261,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
               }}
             >
-              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📊</div>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🛰️</div>
               <h3 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Comprehensive Analysis</h3>
               <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: '1.4' }}>Analyze 10+ pages for SEO, technical performance, and AI bot accessibility</p>
               <div style={{
@@ -269,7 +308,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
               }}
             >
-              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🤖</div>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>👾</div>
               <h3 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>AI Search Simulation</h3>
               <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: '1.4' }}>See how AI systems like ChatGPT and Gemini would describe your business</p>
               <div style={{
@@ -316,7 +355,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
               }}
             >
-              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🎯</div>
+              <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🌠</div>
               <h3 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Actionable Insights</h3>
               <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: '1.4' }}>Get prioritized recommendations for both classic SEO and AI optimization</p>
               <div style={{
