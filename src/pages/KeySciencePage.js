@@ -987,7 +987,7 @@ const KeySciencePage = () => {
               marginBottom: '1rem', 
               color: '#FFD700'
             }}>
-              The <span style={{color: '#00d4ff'}}>Key Science</span>
+              The <span style={{color: '#FF0000'}}>Key Science</span>
             </h1>
             <p style={{ 
               fontSize: '1.3rem', 
