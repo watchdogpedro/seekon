@@ -1152,7 +1152,7 @@ const KeySciencePage = () => {
                           fontWeight: '700',
                           margin: 0,
                           lineHeight: '1.2',
-                          color: '#FFD700'
+                          color: '#1e3a8a'
                         }}>
                           {point.title}
                         </h3>
