@@ -253,45 +253,6 @@ const OrbitalScanExplainer = ({ isOpen, onClose }) => {
             </div>
           </section>
 
-          {/* CTA */}
-          <div style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            color: 'white',
-            padding: '2rem',
-            borderRadius: '16px',
-            textAlign: 'center'
-          }}>
-            <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>
-              Ready to See How AI-Ready Your Website Is?
-            </h3>
-            <p style={{ marginBottom: '1.5rem', opacity: 0.9 }}>
-              Get your free Orbital Scan in under 30 seconds
-            </p>
-            <button
-              onClick={onClose}
-              style={{
-                background: '#FF6B6B',
-                color: 'white',
-                padding: '1rem 2rem',
-                border: 'none',
-                borderRadius: '50px',
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(255, 107, 107, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
-              }}
-            >
-              🚀 Start My Orbital Scan
-            </button>
-          </div>
         </div>
       </div>
     </div>
