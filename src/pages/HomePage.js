@@ -45,7 +45,7 @@ const HomePage = () => {
         <div className="container">
           <div className="hero-content">
             <h1>
-              Be found by <span className="highlight">people and AI</span><br />
+              <span style={{ fontSize: '3.5em', fontWeight: 'bold' }}>AI</span> <span className="highlight">Searchable</span><br />
               <span className="jetpack-text">Jetpack Your Rankings</span>
             </h1>
             <p>
