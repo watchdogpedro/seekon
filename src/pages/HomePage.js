@@ -273,7 +273,7 @@ const HomePage = () => {
               }}>
                 1
               </div>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🕷️</div>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🔍</div>
               <h3 style={{ 
                 color: '#667eea', 
                 fontSize: '1.3rem', 
@@ -288,7 +288,7 @@ const HomePage = () => {
                 lineHeight: '1.5',
                 margin: 0
               }}>
-                Our AI spider crawls up to 10 pages of your website, mapping structure, content, and technical elements
+                Our AI scanner discovers up to 10 pages of your website, mapping structure, content, and technical elements
               </p>
             </div>
 
