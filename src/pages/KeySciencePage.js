@@ -969,39 +969,14 @@ const KeySciencePage = () => {
       {/* Animated Floating Clouds */}
       <div className="floating-clouds">
         <div className="cloud cloud1"></div>
-        <div className="cloud cloud2"></div>
         <div className="cloud cloud3"></div>
-        <div className="cloud cloud4"></div>
         <div className="cloud cloud5"></div>
-        <div className="cloud cloud6"></div>
-        <div className="cloud cloud7"></div>
         <div className="cloud cloud8"></div>
-        <div className="cloud cloud9"></div>
-        <div className="cloud cloud10"></div>
         <div className="cloud cloud11"></div>
-        <div className="cloud cloud12"></div>
-        <div className="cloud cloud13"></div>
-        <div className="cloud cloud14"></div>
         <div className="cloud cloud15"></div>
-        <div className="cloud cloud16"></div>
-        <div className="cloud cloud17"></div>
-        <div className="cloud cloud18"></div>
-        <div className="cloud cloud19"></div>
         <div className="cloud cloud20"></div>
-        <div className="cloud cloud21"></div>
-        <div className="cloud cloud22"></div>
-        <div className="cloud cloud23"></div>
-        <div className="cloud cloud24"></div>
         <div className="cloud cloud25"></div>
-        <div className="cloud cloud26"></div>
-        <div className="cloud cloud27"></div>
-        <div className="cloud cloud28"></div>
-        <div className="cloud cloud29"></div>
         <div className="cloud cloud30"></div>
-        <div className="cloud cloud31"></div>
-        <div className="cloud cloud32"></div>
-        <div className="cloud cloud33"></div>
-        <div className="cloud cloud34"></div>
         <div className="cloud cloud35"></div>
       </div>
       <section style={{ padding: '4rem 0', position: 'relative', zIndex: 10 }}>
@@ -1088,8 +1063,8 @@ const KeySciencePage = () => {
                     className="professional-card"
                     onClick={() => toggleCard(index)}
                     style={{
-                      background: 'rgba(255, 255, 255, 0.95)',
-                      backdropFilter: 'blur(15px)',
+                      background: 'rgba(255, 255, 255, 0.98)',
+                      backdropFilter: 'blur(5px)',
                       borderRadius: '16px',
                       boxShadow: isExpanded 
                         ? `0 25px 80px ${colorScheme.bg}70, 0 0 0 1px rgba(255,255,255,0.1)` 
@@ -1106,7 +1081,7 @@ const KeySciencePage = () => {
                       if (!isExpanded) {
                         e.currentTarget.style.transform = 'translateY(-8px) scale(1)';
                         e.currentTarget.style.boxShadow = `0 16px 48px ${colorScheme.bg}50, 0 0 0 1px rgba(255,255,255,0.2)`;
-                        e.currentTarget.querySelector('.card-content').style.background = `rgba(255, 255, 255, 0.98)`;
+                        e.currentTarget.querySelector('.card-content').style.background = `rgba(255, 255, 255, 0.99)`;
                         e.currentTarget.querySelector('.card-header').style.background = `${colorScheme.accent}CC`;
                         e.currentTarget.querySelector('.card-description').style.opacity = '1';
                         e.currentTarget.querySelector('.card-description').style.maxHeight = '200px';
@@ -1116,7 +1091,7 @@ const KeySciencePage = () => {
                       if (!isExpanded) {
                         e.currentTarget.style.transform = 'translateY(0) scale(1)';
                         e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.1)';
-                        e.currentTarget.querySelector('.card-content').style.background = 'rgba(255, 255, 255, 0.95)';
+                        e.currentTarget.querySelector('.card-content').style.background = 'rgba(255, 255, 255, 0.98)';
                         e.currentTarget.querySelector('.card-header').style.background = `${colorScheme.bg}CC`;
                         e.currentTarget.querySelector('.card-description').style.opacity = '0.7';
                         e.currentTarget.querySelector('.card-description').style.maxHeight = '60px';
@@ -1174,7 +1149,7 @@ const KeySciencePage = () => {
                       className="card-content"
                       style={{
                         padding: '1rem',
-                        background: 'rgba(255, 255, 255, 0.95)',
+                        background: 'rgba(255, 255, 255, 0.98)',
                         transition: 'all 0.3s ease'
                       }}
                     >
