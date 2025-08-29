@@ -46,6 +46,7 @@ const HomePage = () => {
           <div className="hero-content">
             <h1>
               <span style={{ fontSize: '3.5em', fontWeight: 'bold' }}>AI</span> <span className="highlight">Searchable</span><br />
+              <span style={{ fontSize: '1.2em', color: '#667eea', fontWeight: '500', marginTop: '0.5rem', display: 'block' }}>revolutionize your company with content creation</span><br />
               <span className="jetpack-text">Jetpack Your Rankings</span>
             </h1>
             <p>
