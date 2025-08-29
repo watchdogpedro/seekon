@@ -255,45 +255,6 @@ const HyperdriveMonitorExplainer = ({ isOpen, onClose }) => {
             </div>
           </section>
 
-          {/* CTA */}
-          <div style={{
-            background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-            color: 'white',
-            padding: '2rem',
-            borderRadius: '16px',
-            textAlign: 'center'
-          }}>
-            <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>
-              Ready for AI-Era Performance Monitoring?
-            </h3>
-            <p style={{ marginBottom: '1.5rem', opacity: 0.9 }}>
-              Stay ahead of the curve with continuous AI visibility tracking and optimization
-            </p>
-            <button
-              onClick={onClose}
-              style={{
-                background: '#FF6B6B',
-                color: 'white',
-                padding: '1rem 2rem',
-                border: 'none',
-                borderRadius: '50px',
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 25px rgba(255, 107, 107, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
-              }}
-            >
-              ⚡ Explore Hyperdrive Monitor
-            </button>
-          </div>
         </div>
       </div>
     </div>
