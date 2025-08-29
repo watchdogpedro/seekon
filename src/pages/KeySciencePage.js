@@ -138,7 +138,7 @@ const KeySciencePage = () => {
           width: 100%;
           height: 100%;
           pointer-events: none;
-          z-index: 1;
+          z-index: 50;
         }
         
         .cloud {
@@ -339,6 +339,627 @@ const KeySciencePage = () => {
           right: 10px;
         }
         
+        .cloud9 {
+          width: 100px;
+          height: 50px;
+          top: 15%;
+          left: -14%;
+          animation: float-right 35s infinite linear;
+          animation-delay: -35s;
+        }
+        
+        .cloud9:before {
+          width: 60px;
+          height: 60px;
+          top: -30px;
+          left: 14px;
+        }
+        
+        .cloud9:after {
+          width: 70px;
+          height: 40px;
+          top: -20px;
+          right: 14px;
+        }
+        
+        .cloud10 {
+          width: 80px;
+          height: 40px;
+          top: 25%;
+          left: -9%;
+          animation: float-right 29s infinite linear;
+          animation-delay: -40s;
+        }
+        
+        .cloud10:before {
+          width: 50px;
+          height: 50px;
+          top: -25px;
+          left: 9px;
+        }
+        
+        .cloud10:after {
+          width: 60px;
+          height: 35px;
+          top: -15px;
+          right: 9px;
+        }
+        
+        .cloud11 {
+          width: 105px;
+          height: 52px;
+          top: 35%;
+          left: -16%;
+          animation: float-right 42s infinite linear;
+          animation-delay: -45s;
+        }
+        
+        .cloud11:before {
+          width: 63px;
+          height: 63px;
+          top: -31px;
+          left: 16px;
+        }
+        
+        .cloud11:after {
+          width: 73px;
+          height: 42px;
+          top: -21px;
+          right: 16px;
+        }
+        
+        .cloud12 {
+          width: 88px;
+          height: 44px;
+          top: 45%;
+          left: -11%;
+          animation: float-right 33s infinite linear;
+          animation-delay: -50s;
+        }
+        
+        .cloud12:before {
+          width: 53px;
+          height: 53px;
+          top: -26px;
+          left: 11px;
+        }
+        
+        .cloud12:after {
+          width: 63px;
+          height: 37px;
+          top: -17px;
+          right: 11px;
+        }
+        
+        .cloud13 {
+          width: 92px;
+          height: 46px;
+          top: 55%;
+          left: -13%;
+          animation: float-right 36s infinite linear;
+          animation-delay: -55s;
+        }
+        
+        .cloud13:before {
+          width: 56px;
+          height: 56px;
+          top: -28px;
+          left: 13px;
+        }
+        
+        .cloud13:after {
+          width: 66px;
+          height: 39px;
+          top: -19px;
+          right: 13px;
+        }
+        
+        .cloud14 {
+          width: 78px;
+          height: 39px;
+          top: 65%;
+          left: -8%;
+          animation: float-right 27s infinite linear;
+          animation-delay: -60s;
+        }
+        
+        .cloud14:before {
+          width: 47px;
+          height: 47px;
+          top: -23px;
+          left: 8px;
+        }
+        
+        .cloud14:after {
+          width: 57px;
+          height: 33px;
+          top: -13px;
+          right: 8px;
+        }
+        
+        .cloud15 {
+          width: 96px;
+          height: 48px;
+          top: 80%;
+          left: -12%;
+          animation: float-right 39s infinite linear;
+          animation-delay: -65s;
+        }
+        
+        .cloud15:before {
+          width: 58px;
+          height: 58px;
+          top: -29px;
+          left: 12px;
+        }
+        
+        .cloud15:after {
+          width: 68px;
+          height: 41px;
+          top: -19px;
+          right: 12px;
+        }
+        
+        .cloud16 {
+          width: 84px;
+          height: 42px;
+          top: 90%;
+          left: -10%;
+          animation: float-right 31s infinite linear;
+          animation-delay: -70s;
+        }
+        
+        .cloud16:before {
+          width: 51px;
+          height: 51px;
+          top: -25px;
+          left: 10px;
+        }
+        
+        .cloud16:after {
+          width: 61px;
+          height: 36px;
+          top: -16px;
+          right: 10px;
+        }
+        
+        .cloud17 {
+          width: 102px;
+          height: 51px;
+          top: 95%;
+          left: -15%;
+          animation: float-right 41s infinite linear;
+          animation-delay: -75s;
+        }
+        
+        .cloud17:before {
+          width: 61px;
+          height: 61px;
+          top: -30px;
+          left: 15px;
+        }
+        
+        .cloud17:after {
+          width: 71px;
+          height: 43px;
+          top: -21px;
+          right: 15px;
+        }
+        
+        .cloud18 {
+          width: 87px;
+          height: 43px;
+          top: 12%;
+          left: -11%;
+          animation: float-right 34s infinite linear;
+          animation-delay: -10s;
+        }
+        
+        .cloud18:before {
+          width: 52px;
+          height: 52px;
+          top: -26px;
+          left: 11px;
+        }
+        
+        .cloud18:after {
+          width: 62px;
+          height: 37px;
+          top: -17px;
+          right: 11px;
+        }
+        
+        .cloud19 {
+          width: 93px;
+          height: 47px;
+          top: 22%;
+          left: -13%;
+          animation: float-right 37s infinite linear;
+          animation-delay: -18s;
+        }
+        
+        .cloud19:before {
+          width: 56px;
+          height: 56px;
+          top: -28px;
+          left: 13px;
+        }
+        
+        .cloud19:after {
+          width: 66px;
+          height: 40px;
+          top: -18px;
+          right: 13px;
+        }
+        
+        .cloud20 {
+          width: 110px;
+          height: 55px;
+          top: 32%;
+          left: -17%;
+          animation: float-right 43s infinite linear;
+          animation-delay: -22s;
+        }
+        
+        .cloud20:before {
+          width: 66px;
+          height: 66px;
+          top: -33px;
+          left: 17px;
+        }
+        
+        .cloud20:after {
+          width: 76px;
+          height: 47px;
+          top: -23px;
+          right: 17px;
+        }
+        
+        .cloud21 {
+          width: 79px;
+          height: 39px;
+          top: 42%;
+          left: -9%;
+          animation: float-right 26s infinite linear;
+          animation-delay: -28s;
+        }
+        
+        .cloud21:before {
+          width: 47px;
+          height: 47px;
+          top: -23px;
+          left: 9px;
+        }
+        
+        .cloud21:after {
+          width: 57px;
+          height: 33px;
+          top: -13px;
+          right: 9px;
+        }
+        
+        .cloud22 {
+          width: 98px;
+          height: 49px;
+          top: 52%;
+          left: -14%;
+          animation: float-right 40s infinite linear;
+          animation-delay: -35s;
+        }
+        
+        .cloud22:before {
+          width: 59px;
+          height: 59px;
+          top: -29px;
+          left: 14px;
+        }
+        
+        .cloud22:after {
+          width: 69px;
+          height: 42px;
+          top: -19px;
+          right: 14px;
+        }
+        
+        .cloud23 {
+          width: 86px;
+          height: 43px;
+          top: 62%;
+          left: -10%;
+          animation: float-right 33s infinite linear;
+          animation-delay: -42s;
+        }
+        
+        .cloud23:before {
+          width: 52px;
+          height: 52px;
+          top: -26px;
+          left: 10px;
+        }
+        
+        .cloud23:after {
+          width: 62px;
+          height: 37px;
+          top: -17px;
+          right: 10px;
+        }
+        
+        .cloud24 {
+          width: 104px;
+          height: 52px;
+          top: 72%;
+          left: -16%;
+          animation: float-right 41s infinite linear;
+          animation-delay: -48s;
+        }
+        
+        .cloud24:before {
+          width: 62px;
+          height: 62px;
+          top: -31px;
+          left: 16px;
+        }
+        
+        .cloud24:after {
+          width: 72px;
+          height: 44px;
+          top: -21px;
+          right: 16px;
+        }
+        
+        .cloud25 {
+          width: 82px;
+          height: 41px;
+          top: 82%;
+          left: -9%;
+          animation: float-right 30s infinite linear;
+          animation-delay: -55s;
+        }
+        
+        .cloud25:before {
+          width: 49px;
+          height: 49px;
+          top: -24px;
+          left: 9px;
+        }
+        
+        .cloud25:after {
+          width: 59px;
+          height: 35px;
+          top: -15px;
+          right: 9px;
+        }
+        
+        .cloud26 {
+          width: 91px;
+          height: 46px;
+          top: 92%;
+          left: -12%;
+          animation: float-right 36s infinite linear;
+          animation-delay: -62s;
+        }
+        
+        .cloud26:before {
+          width: 55px;
+          height: 55px;
+          top: -27px;
+          left: 12px;
+        }
+        
+        .cloud26:after {
+          width: 65px;
+          height: 39px;
+          top: -17px;
+          right: 12px;
+        }
+        
+        .cloud27 {
+          width: 75px;
+          height: 37px;
+          top: 8%;
+          left: -8%;
+          animation: float-right 27s infinite linear;
+          animation-delay: -68s;
+        }
+        
+        .cloud27:before {
+          width: 45px;
+          height: 45px;
+          top: -22px;
+          left: 8px;
+        }
+        
+        .cloud27:after {
+          width: 55px;
+          height: 31px;
+          top: -12px;
+          right: 8px;
+        }
+        
+        .cloud28 {
+          width: 107px;
+          height: 54px;
+          top: 18%;
+          left: -17%;
+          animation: float-right 44s infinite linear;
+          animation-delay: -75s;
+        }
+        
+        .cloud28:before {
+          width: 64px;
+          height: 64px;
+          top: -32px;
+          left: 17px;
+        }
+        
+        .cloud28:after {
+          width: 74px;
+          height: 46px;
+          top: -22px;
+          right: 17px;
+        }
+        
+        .cloud29 {
+          width: 89px;
+          height: 44px;
+          top: 28%;
+          left: -11%;
+          animation: float-right 35s infinite linear;
+          animation-delay: -82s;
+        }
+        
+        .cloud29:before {
+          width: 53px;
+          height: 53px;
+          top: -26px;
+          left: 11px;
+        }
+        
+        .cloud29:after {
+          width: 63px;
+          height: 38px;
+          top: -16px;
+          right: 11px;
+        }
+        
+        .cloud30 {
+          width: 95px;
+          height: 48px;
+          top: 38%;
+          left: -14%;
+          animation: float-right 38s infinite linear;
+          animation-delay: -88s;
+        }
+        
+        .cloud30:before {
+          width: 57px;
+          height: 57px;
+          top: -28px;
+          left: 14px;
+        }
+        
+        .cloud30:after {
+          width: 67px;
+          height: 41px;
+          top: -18px;
+          right: 14px;
+        }
+        
+        .cloud31 {
+          width: 77px;
+          height: 38px;
+          top: 48%;
+          left: -8%;
+          animation: float-right 28s infinite linear;
+          animation-delay: -95s;
+        }
+        
+        .cloud31:before {
+          width: 46px;
+          height: 46px;
+          top: -23px;
+          left: 8px;
+        }
+        
+        .cloud31:after {
+          width: 56px;
+          height: 32px;
+          top: -13px;
+          right: 8px;
+        }
+        
+        .cloud32 {
+          width: 101px;
+          height: 50px;
+          top: 58%;
+          left: -15%;
+          animation: float-right 42s infinite linear;
+          animation-delay: -102s;
+        }
+        
+        .cloud32:before {
+          width: 60px;
+          height: 60px;
+          top: -30px;
+          left: 15px;
+        }
+        
+        .cloud32:after {
+          width: 70px;
+          height: 43px;
+          top: -20px;
+          right: 15px;
+        }
+        
+        .cloud33 {
+          width: 83px;
+          height: 42px;
+          top: 68%;
+          left: -10%;
+          animation: float-right 31s infinite linear;
+          animation-delay: -108s;
+        }
+        
+        .cloud33:before {
+          width: 50px;
+          height: 50px;
+          top: -25px;
+          left: 10px;
+        }
+        
+        .cloud33:after {
+          width: 60px;
+          height: 36px;
+          top: -16px;
+          right: 10px;
+        }
+        
+        .cloud34 {
+          width: 97px;
+          height: 49px;
+          top: 78%;
+          left: -13%;
+          animation: float-right 39s infinite linear;
+          animation-delay: -115s;
+        }
+        
+        .cloud34:before {
+          width: 58px;
+          height: 58px;
+          top: -29px;
+          left: 13px;
+        }
+        
+        .cloud34:after {
+          width: 68px;
+          height: 42px;
+          top: -19px;
+          right: 13px;
+        }
+        
+        .cloud35 {
+          width: 81px;
+          height: 40px;
+          top: 88%;
+          left: -9%;
+          animation: float-right 29s infinite linear;
+          animation-delay: -122s;
+        }
+        
+        .cloud35:before {
+          width: 48px;
+          height: 48px;
+          top: -24px;
+          left: 9px;
+        }
+        
+        .cloud35:after {
+          width: 58px;
+          height: 34px;
+          top: -14px;
+          right: 9px;
+        }
+        
         @keyframes float-right {
           0% { transform: translateX(-120px); }
           100% { transform: translateX(calc(100vw + 120px)); }
@@ -355,6 +976,33 @@ const KeySciencePage = () => {
         <div className="cloud cloud6"></div>
         <div className="cloud cloud7"></div>
         <div className="cloud cloud8"></div>
+        <div className="cloud cloud9"></div>
+        <div className="cloud cloud10"></div>
+        <div className="cloud cloud11"></div>
+        <div className="cloud cloud12"></div>
+        <div className="cloud cloud13"></div>
+        <div className="cloud cloud14"></div>
+        <div className="cloud cloud15"></div>
+        <div className="cloud cloud16"></div>
+        <div className="cloud cloud17"></div>
+        <div className="cloud cloud18"></div>
+        <div className="cloud cloud19"></div>
+        <div className="cloud cloud20"></div>
+        <div className="cloud cloud21"></div>
+        <div className="cloud cloud22"></div>
+        <div className="cloud cloud23"></div>
+        <div className="cloud cloud24"></div>
+        <div className="cloud cloud25"></div>
+        <div className="cloud cloud26"></div>
+        <div className="cloud cloud27"></div>
+        <div className="cloud cloud28"></div>
+        <div className="cloud cloud29"></div>
+        <div className="cloud cloud30"></div>
+        <div className="cloud cloud31"></div>
+        <div className="cloud cloud32"></div>
+        <div className="cloud cloud33"></div>
+        <div className="cloud cloud34"></div>
+        <div className="cloud cloud35"></div>
       </div>
       <section style={{ padding: '4rem 0', position: 'relative', zIndex: 10 }}>
         <div className="container">
@@ -362,7 +1010,7 @@ const KeySciencePage = () => {
             <h1 style={{ 
               fontSize: '3rem', 
               marginBottom: '1rem', 
-              color: 'white'
+              color: '#FFD700'
             }}>
               The <span style={{color: '#00d4ff'}}>Key Science</span>
             </h1>
@@ -440,12 +1088,13 @@ const KeySciencePage = () => {
                     className="professional-card"
                     onClick={() => toggleCard(index)}
                     style={{
-                      background: 'white',
+                      background: 'rgba(255, 255, 255, 0.95)',
+                      backdropFilter: 'blur(15px)',
                       borderRadius: '16px',
                       boxShadow: isExpanded 
-                        ? `0 20px 60px ${colorScheme.bg}60` 
-                        : '0 4px 20px rgba(0,0,0,0.08)',
-                      border: `2px solid ${colorScheme.bg}`,
+                        ? `0 25px 80px ${colorScheme.bg}70, 0 0 0 1px rgba(255,255,255,0.1)` 
+                        : '0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.1)',
+                      border: `3px solid ${colorScheme.bg}`,
                       overflow: 'hidden',
                       cursor: 'pointer',
                       transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -456,8 +1105,8 @@ const KeySciencePage = () => {
                     onMouseEnter={(e) => {
                       if (!isExpanded) {
                         e.currentTarget.style.transform = 'translateY(-8px) scale(1)';
-                        e.currentTarget.style.boxShadow = `0 12px 40px ${colorScheme.bg}40`;
-                        e.currentTarget.querySelector('.card-content').style.background = `${colorScheme.bg}08`;
+                        e.currentTarget.style.boxShadow = `0 16px 48px ${colorScheme.bg}50, 0 0 0 1px rgba(255,255,255,0.2)`;
+                        e.currentTarget.querySelector('.card-content').style.background = `rgba(255, 255, 255, 0.98)`;
                         e.currentTarget.querySelector('.card-header').style.background = `${colorScheme.accent}CC`;
                         e.currentTarget.querySelector('.card-description').style.opacity = '1';
                         e.currentTarget.querySelector('.card-description').style.maxHeight = '200px';
@@ -466,8 +1115,8 @@ const KeySciencePage = () => {
                     onMouseLeave={(e) => {
                       if (!isExpanded) {
                         e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
-                        e.currentTarget.querySelector('.card-content').style.background = 'white';
+                        e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.1)';
+                        e.currentTarget.querySelector('.card-content').style.background = 'rgba(255, 255, 255, 0.95)';
                         e.currentTarget.querySelector('.card-header').style.background = `${colorScheme.bg}CC`;
                         e.currentTarget.querySelector('.card-description').style.opacity = '0.7';
                         e.currentTarget.querySelector('.card-description').style.maxHeight = '60px';
@@ -484,7 +1133,9 @@ const KeySciencePage = () => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.75rem',
-                        transition: 'all 0.3s ease'
+                        transition: 'all 0.3s ease',
+                        position: 'relative',
+                        zIndex: 60
                       }}
                     >
                       <div style={{ 
@@ -500,7 +1151,8 @@ const KeySciencePage = () => {
                           fontSize: '1.1rem', 
                           fontWeight: '700',
                           margin: 0,
-                          lineHeight: '1.2'
+                          lineHeight: '1.2',
+                          color: '#FFD700'
                         }}>
                           {point.title}
                         </h3>
@@ -522,7 +1174,7 @@ const KeySciencePage = () => {
                       className="card-content"
                       style={{
                         padding: '1rem',
-                        background: 'white',
+                        background: 'rgba(255, 255, 255, 0.95)',
                         transition: 'all 0.3s ease'
                       }}
                     >
