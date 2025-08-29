@@ -237,7 +237,7 @@ const DownloadableResources = ({ title = "Resources & Downloads", resources = []
           onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
           onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
           >
-            🛰️ Start Your Orbital Scan
+            🛰️ Start Your <span style={{ fontSize: '1.2em', fontWeight: 'bold' }}>FREE</span> Orbital Scan
           </a>
         </div>
       </div>

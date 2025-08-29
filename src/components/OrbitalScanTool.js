@@ -178,7 +178,7 @@ const OrbitalScanTool = ({ isModal = false, onClose }) => {
               </>
             ) : (
               <>
-                🚀 Start Orbital Scan
+                🚀 Start <span style={{ fontSize: '1.2em', fontWeight: 'bold' }}>FREE</span> Orbital Scan
               </>
             )}
           </button>

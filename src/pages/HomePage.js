@@ -54,7 +54,7 @@ const HomePage = () => {
             
             <div>
               <Link to="/audit-tool" className="btn btn-primary btn-lg contact-button" style={{ textDecoration: 'none' }}>
-                🚀 Run Free Orbital Scan
+                🚀 Run <span style={{ fontSize: '1.2em', fontWeight: 'bold' }}>FREE</span> Orbital Scan
               </Link>
               <button className="btn btn-secondary btn-lg">
                 ▶️ Watch 90-sec Overview
@@ -475,7 +475,7 @@ const HomePage = () => {
                 e.target.style.boxShadow = '0 8px 25px rgba(102, 126, 234, 0.4)';
               }}
             >
-              🚀 Start Your Orbital Scan
+              🚀 Start Your <span style={{ fontSize: '1.2em', fontWeight: 'bold' }}>FREE</span> Orbital Scan
             </Link>
           </div>
         </div>
