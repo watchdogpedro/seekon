@@ -105,10 +105,11 @@ const Navigation = () => {
         alignItems: 'center'
       }}>
         <Link to="/" style={{
-          fontSize: '1.5rem',
-          fontWeight: 'bold',
+          fontSize: '2.5rem',
+          fontWeight: '900',
           color: '#667eea',
-          textDecoration: 'none'
+          textDecoration: 'none',
+          textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
         }} onClick={closeMobileMenu}>
           SeekON.AI
         </Link>

@@ -49,7 +49,7 @@ const HomePage = () => {
               <span style={{ fontSize: '1.2em', color: '#667eea', fontWeight: '500', marginTop: '0.5rem', display: 'block' }}>revolutionize your company with content creation</span>
             </h1>
             <p>
-              SeekON tunes your site for LLMs—so ChatGPT, Gemini, and search copilots actually surface you.
+              <span style={{ fontSize: '1.3em', fontWeight: 'bold', color: '#667eea' }}>SeekON</span> tunes your site for LLMs—so ChatGPT, Gemini, and search copilots actually surface you.
             </p>
             
             <div>
@@ -75,7 +75,7 @@ const HomePage = () => {
             fontWeight: 'bold',
             textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
           }}>
-            🚀 How <span style={{ color: '#FF6B6B' }}>SeekON</span> Launches Your Visibility 🌟
+            🚀 How <span style={{ color: '#FF6B6B', fontSize: '1.3em', fontWeight: 'bold', textShadow: '1px 1px 2px rgba(0,0,0,0.1)' }}>SeekON</span> Launches Your Visibility 🌟
           </h2>
           
           <div className="features-grid">
