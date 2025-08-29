@@ -30,8 +30,6 @@ const HomePage = () => {
 
   return (
     <>
-      {/* Spacing for dropdown menu */}
-      <div style={{ height: '100px', backgroundColor: 'transparent' }}></div>
       
       {/* Full-Width Banner Image */}
       <section className="hero-banner">
