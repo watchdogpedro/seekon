@@ -97,7 +97,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <div className="feature-icon" style={{ fontSize: '4rem', marginBottom: '1rem' }}>🛰️</div>
+              <div className="feature-icon" style={{ fontSize: '8rem', marginBottom: '1rem', animation: 'none' }}>🛰️</div>
               <h3>Orbital Scan</h3>
               <p>
                 Our AI crawls your site and analyzes entity clarity, content structure, 
@@ -133,7 +133,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <div className="feature-icon" style={{ fontSize: '4rem', marginBottom: '1rem' }}>🛸</div>
+              <div className="feature-icon" style={{ fontSize: '8rem', marginBottom: '1rem', animation: 'none' }}>🛸</div>
               <h3>Cosmo Briefs</h3>
               <p>
                 AI-generated content briefs with entities, questions, sources, and 
@@ -169,7 +169,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '';
               }}
             >
-              <div className="feature-icon" style={{ fontSize: '4rem', marginBottom: '1rem' }}>🌌</div>
+              <div className="feature-icon" style={{ fontSize: '8rem', marginBottom: '1rem', animation: 'none' }}>🌌</div>
               <h3>Hyperdrive Monitor</h3>
               <p>
                 Continuous tracking of freshness, internal links, rankings, and 
@@ -255,7 +255,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
               }}
             >
-              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🛰️</div>
+              <div style={{ fontSize: '7rem', marginBottom: '1rem', animation: 'none' }}>🛰️</div>
               <h3 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Comprehensive Analysis</h3>
               <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: '1.4' }}>Analyze 10+ pages for SEO, technical performance, and AI bot accessibility</p>
               <div style={{
@@ -302,7 +302,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
               }}
             >
-              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>👾</div>
+              <div style={{ fontSize: '7rem', marginBottom: '1rem', animation: 'none' }}>👾</div>
               <h3 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>AI Search Simulation</h3>
               <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: '1.4' }}>See how AI systems like ChatGPT and Gemini would describe your business</p>
               <div style={{
@@ -349,7 +349,7 @@ const HomePage = () => {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
               }}
             >
-              <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🌠</div>
+              <div style={{ fontSize: '7rem', marginBottom: '1rem', animation: 'none' }}>🌠</div>
               <h3 style={{ marginBottom: '0.5rem', fontSize: '1.3rem' }}>Actionable Insights</h3>
               <p style={{ opacity: 0.9, fontSize: '0.9rem', lineHeight: '1.4' }}>Get prioritized recommendations for both classic SEO and AI optimization</p>
               <div style={{
