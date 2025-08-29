@@ -34,8 +34,8 @@ const HomePage = () => {
       {/* Full-Width Banner Image */}
       <section className="hero-banner">
         <img 
-          src="/images/banner 4.png" 
-          alt="SeekON AI-powered SEO platform"
+          src="/images/hero-seekon-jetsons.png" 
+          alt="SeekON AI-powered SEO platform - Retro-futuristic AI search optimization"
           className="banner-image"
         />
       </section>
