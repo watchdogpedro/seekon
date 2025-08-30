@@ -120,7 +120,7 @@ const Navigation = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
           <Link to="/" style={{
             fontSize: '2.5rem',
             fontWeight: '900',
@@ -132,10 +132,11 @@ const Navigation = () => {
           </Link>
           {/* Mobile Page Title */}
           <div className="mobile-page-title" style={{
-            fontSize: '1rem',
-            fontWeight: '600',
-            color: '#64748b',
-            display: 'none'
+            fontSize: '1.3rem',
+            fontWeight: '700',
+            color: '#667eea',
+            display: 'none',
+            textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
           }}>
             {getPageName(location.pathname)}
           </div>

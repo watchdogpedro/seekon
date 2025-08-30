@@ -409,11 +409,18 @@ body {
   /* Show mobile page title */
   .mobile-page-title {
     display: block !important;
+    margin-right: 1rem;
   }
   
   /* Adjust logo size on mobile to make room for page title */
   nav .container div:first-child a {
     font-size: 2rem !important;
+  }
+
+  /* Ensure hamburger menu button is positioned properly */
+  .mobile-menu-btn {
+    position: relative !important;
+    z-index: 1001 !important;
   }
   
   /* Reduce hero section padding */
