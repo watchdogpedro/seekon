@@ -339,18 +339,18 @@ body {
 }
 
 @keyframes orbit-1 {
-  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+  0% { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
 }
 
 @keyframes orbit-2 {
-  0% { transform: rotate(0deg) translateX(75px) rotate(0deg); }
-  100% { transform: rotate(-360deg) translateX(75px) rotate(360deg); }
+  0% { transform: rotate(0deg) translateX(65px) rotate(0deg); }
+  100% { transform: rotate(-360deg) translateX(65px) rotate(360deg); }
 }
 
 @keyframes orbit-3 {
-  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+  0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
 }
 
 @keyframes pulse-glow {
@@ -664,39 +664,39 @@ body {
     font-size: 2.5em !important;
   }
 
-  /* Scale down atomic rings on mobile */
+  /* Scale down atomic target rings on mobile */
   .ring-1 {
-    width: 120px !important;
-    height: 120px !important;
-    top: -60px !important;
-    left: -60px !important;
+    width: 100px !important;
+    height: 100px !important;
+    top: -50px !important;
+    left: -50px !important;
   }
 
   .ring-2 {
-    width: 90px !important;
-    height: 90px !important;
-    top: -45px !important;
-    left: -45px !important;
+    width: 75px !important;
+    height: 75px !important;
+    top: -37.5px !important;
+    left: -37.5px !important;
   }
 
   .ring-3 {
-    width: 60px !important;
-    height: 60px !important;
-    top: -30px !important;
-    left: -30px !important;
+    width: 50px !important;
+    height: 50px !important;
+    top: -25px !important;
+    left: -25px !important;
   }
 
   /* Scale down atoms on mobile */
   .atom-1 {
-    right: -64px !important;
+    right: -54px !important;
   }
 
   .atom-2 {
-    right: -48px !important;
+    right: -41px !important;
   }
 
   .atom-3 {
-    right: -32px !important;
+    right: -27px !important;
   }
 }
 

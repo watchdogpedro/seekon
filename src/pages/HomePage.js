@@ -49,84 +49,8 @@ const HomePage = () => {
               display: 'inline-block', 
               marginBottom: '2rem' 
             }}>
-              {/* Atomic Rings Animation */}
-              <div className="atomic-rings" style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 0,
-                pointerEvents: 'none'
-              }}>
-                <div className="ring ring-1" style={{
-                  position: 'absolute',
-                  width: '200px',
-                  height: '200px',
-                  border: '3px solid rgba(102, 126, 234, 0.3)',
-                  borderRadius: '50%',
-                  top: '-100px',
-                  left: '-100px',
-                  animation: 'rotate-clockwise 20s linear infinite'
-                }}></div>
-                <div className="ring ring-2" style={{
-                  position: 'absolute',
-                  width: '150px',
-                  height: '150px',
-                  border: '2px solid rgba(118, 75, 162, 0.4)',
-                  borderRadius: '50%',
-                  top: '-75px',
-                  left: '-75px',
-                  animation: 'rotate-counter-clockwise 15s linear infinite'
-                }}></div>
-                <div className="ring ring-3" style={{
-                  position: 'absolute',
-                  width: '100px',
-                  height: '100px',
-                  border: '2px solid rgba(0, 212, 170, 0.5)',
-                  borderRadius: '50%',
-                  top: '-50px',
-                  left: '-50px',
-                  animation: 'rotate-clockwise 12s linear infinite'
-                }}></div>
-                
-                {/* Floating Atoms */}
-                <div className="atom atom-1" style={{
-                  position: 'absolute',
-                  width: '8px',
-                  height: '8px',
-                  backgroundColor: '#FFD700',
-                  borderRadius: '50%',
-                  top: '-4px',
-                  right: '-104px',
-                  animation: 'orbit-1 20s linear infinite',
-                  boxShadow: '0 0 10px rgba(255, 215, 0, 0.6)'
-                }}></div>
-                <div className="atom atom-2" style={{
-                  position: 'absolute',
-                  width: '6px',
-                  height: '6px',
-                  backgroundColor: '#FF6B6B',
-                  borderRadius: '50%',
-                  top: '-3px',
-                  right: '-78px',
-                  animation: 'orbit-2 15s linear infinite',
-                  boxShadow: '0 0 8px rgba(255, 107, 107, 0.6)'
-                }}></div>
-                <div className="atom atom-3" style={{
-                  position: 'absolute',
-                  width: '5px',
-                  height: '5px',
-                  backgroundColor: '#4ECDC4',
-                  borderRadius: '50%',
-                  top: '-2.5px',
-                  right: '-52.5px',
-                  animation: 'orbit-3 12s linear infinite',
-                  boxShadow: '0 0 6px rgba(78, 205, 196, 0.6)'
-                }}></div>
-              </div>
-
               {/* Main Logo Text */}
-              <h1 style={{ position: 'relative', zIndex: 1, margin: 0 }}>
+              <h1 style={{ position: 'relative', zIndex: 2, margin: 0 }}>
                 <div className="ai-searchable-logo" style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -134,28 +58,108 @@ const HomePage = () => {
                   gap: '1rem',
                   flexWrap: 'wrap'
                 }}>
-                  <span className="ai-text" style={{ 
-                    fontSize: '3.5em', 
-                    fontWeight: 'bold',
-                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-                    position: 'relative',
-                    animation: 'pulse-glow 3s ease-in-out infinite'
-                  }}>
-                    AI
-                    {/* AI Accent Decorations */}
-                    <span style={{
+                  <div className="ai-with-target" style={{ position: 'relative', display: 'inline-block' }}>
+                    {/* Atomic Target Rings Behind AI */}
+                    <div className="atomic-target" style={{
                       position: 'absolute',
-                      top: '-10px',
-                      right: '-15px',
-                      fontSize: '0.3em',
-                      color: '#FFD700',
-                      animation: 'twinkle 2s ease-in-out infinite'
-                    }}>✨</span>
-                  </span>
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      zIndex: 0,
+                      pointerEvents: 'none'
+                    }}>
+                      <div className="ring ring-1" style={{
+                        position: 'absolute',
+                        width: '180px',
+                        height: '180px',
+                        border: '3px solid rgba(102, 126, 234, 0.4)',
+                        borderRadius: '50%',
+                        top: '-90px',
+                        left: '-90px',
+                        animation: 'rotate-clockwise 20s linear infinite'
+                      }}></div>
+                      <div className="ring ring-2" style={{
+                        position: 'absolute',
+                        width: '130px',
+                        height: '130px',
+                        border: '3px solid rgba(118, 75, 162, 0.5)',
+                        borderRadius: '50%',
+                        top: '-65px',
+                        left: '-65px',
+                        animation: 'rotate-counter-clockwise 15s linear infinite'
+                      }}></div>
+                      <div className="ring ring-3" style={{
+                        position: 'absolute',
+                        width: '80px',
+                        height: '80px',
+                        border: '2px solid rgba(0, 212, 170, 0.6)',
+                        borderRadius: '50%',
+                        top: '-40px',
+                        left: '-40px',
+                        animation: 'rotate-clockwise 12s linear infinite'
+                      }}></div>
+                      
+                      {/* Floating Atoms */}
+                      <div className="atom atom-1" style={{
+                        position: 'absolute',
+                        width: '8px',
+                        height: '8px',
+                        backgroundColor: '#FFD700',
+                        borderRadius: '50%',
+                        top: '-4px',
+                        right: '-94px',
+                        animation: 'orbit-1 20s linear infinite',
+                        boxShadow: '0 0 10px rgba(255, 215, 0, 0.6)'
+                      }}></div>
+                      <div className="atom atom-2" style={{
+                        position: 'absolute',
+                        width: '6px',
+                        height: '6px',
+                        backgroundColor: '#FF6B6B',
+                        borderRadius: '50%',
+                        top: '-3px',
+                        right: '-68px',
+                        animation: 'orbit-2 15s linear infinite',
+                        boxShadow: '0 0 8px rgba(255, 107, 107, 0.6)'
+                      }}></div>
+                      <div className="atom atom-3" style={{
+                        position: 'absolute',
+                        width: '5px',
+                        height: '5px',
+                        backgroundColor: '#4ECDC4',
+                        borderRadius: '50%',
+                        top: '-2.5px',
+                        right: '-42.5px',
+                        animation: 'orbit-3 12s linear infinite',
+                        boxShadow: '0 0 6px rgba(78, 205, 196, 0.6)'
+                      }}></div>
+                    </div>
+
+                    {/* AI Text (now at center of target) */}
+                    <span className="ai-text" style={{ 
+                      fontSize: '3.5em', 
+                      fontWeight: 'bold',
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+                      position: 'relative',
+                      zIndex: 1,
+                      animation: 'pulse-glow 3s ease-in-out infinite'
+                    }}>
+                      AI
+                      {/* AI Accent Decorations */}
+                      <span style={{
+                        position: 'absolute',
+                        top: '-10px',
+                        right: '-15px',
+                        fontSize: '0.3em',
+                        color: '#FFD700',
+                        animation: 'twinkle 2s ease-in-out infinite'
+                      }}>✨</span>
+                    </span>
+                  </div>
                   
                   <span className="searchable-text" style={{ 
                     fontSize: '3.5em',
