@@ -6,7 +6,7 @@ const AboutPage = () => {
     <div style={{ background: 'white', minHeight: '100vh' }}>
       <section style={{ padding: '4rem 0' }}>
         <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <div className="about-content" style={{ maxWidth: '800px', margin: '0 auto' }}>
             <h1 style={{ 
               fontSize: '3rem', 
               marginBottom: '2rem', 
@@ -32,9 +32,9 @@ const AboutPage = () => {
                 Our deep expertise spans critical industries where precision and authority matter most:
               </p>
               
-              <div style={{ 
+              <div className="about-expertise-grid" style={{ 
                 display: 'grid', 
-                gridTemplateColumns: '1fr 1fr 1fr', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
                 gap: '2rem',
                 margin: '2rem 0'
               }}>

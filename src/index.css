@@ -556,6 +556,34 @@ body {
   div[style*="1200px"] {
     max-width: 100% !important;
   }
+
+  /* Fix About Us page grid layout */
+  .about-expertise-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Reduce About Us page padding and font sizes */
+  .about-expertise-grid > div {
+    padding: 1.5rem !important;
+  }
+
+  /* Fix About Us page content on mobile */
+  .about-content {
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Reduce About Us section padding on mobile */
+  .about-content h1 {
+    font-size: 2rem !important;
+  }
+
+  /* Ensure About Us page respects mobile width */
+  .about-content p, 
+  .about-content div {
+    max-width: 100% !important;
+  }
 }
 
 /* Desktop Navigation with Dropdown - only apply on desktop screens */
