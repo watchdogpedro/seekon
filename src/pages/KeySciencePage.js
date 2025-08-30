@@ -1040,6 +1040,94 @@ const KeySciencePage = () => {
               animation: 'sparkle 3.5s infinite'
             }}>🌟</div>
 
+            {/* AI Data Sources Chart Section */}
+            <div style={{ 
+              background: 'rgba(255,255,255,0.1)', 
+              backdropFilter: 'blur(10px)',
+              borderRadius: '20px', 
+              padding: '3rem', 
+              marginBottom: '4rem',
+              border: '1px solid rgba(255,255,255,0.2)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+            }}>
+              <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                <h2 style={{ 
+                  fontSize: '2.2rem', 
+                  marginBottom: '1rem', 
+                  color: '#FFD700',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+                }}>
+                  🎯 Where AI Gets Its Facts
+                </h2>
+                <p style={{ 
+                  fontSize: '1.1rem', 
+                  color: 'rgba(255, 255, 255, 0.9)', 
+                  maxWidth: '800px', 
+                  margin: '0 auto',
+                  lineHeight: '1.6'
+                }}>
+                  Understanding AI's preferred sources is crucial for AEO strategy. This data reveals which platforms 
+                  AI engines cite most frequently when answering questions - showing you where to focus your optimization efforts.
+                </p>
+              </div>
+              
+              <div className="chart-container" style={{
+                background: 'white',
+                borderRadius: '15px',
+                padding: '2rem',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                maxWidth: '900px',
+                margin: '0 auto'
+              }}>
+                <img 
+                  src="/images/ai-data-sources-chart.png" 
+                  alt="Where AI Gets Its Facts - Chart showing Reddit (40.1%), Wikipedia (26.3%), YouTube (23.5%), Google (23.3%), and other sources AI engines use most frequently"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: '10px',
+                    display: 'block'
+                  }}
+                />
+              </div>
+              
+              <div style={{ 
+                marginTop: '2rem', 
+                textAlign: 'center',
+                fontSize: '0.95rem',
+                color: 'rgba(255,255,255,0.8)',
+                fontStyle: 'italic'
+              }}>
+                <p>Data shows Reddit leads at 40.1%, followed by Wikipedia (26.3%) and YouTube (23.5%)</p>
+              </div>
+
+              <div style={{ 
+                marginTop: '2.5rem',
+                background: 'rgba(255,215,0,0.1)',
+                border: '1px solid rgba(255,215,0,0.3)',
+                borderRadius: '10px',
+                padding: '1.5rem'
+              }}>
+                <h3 style={{ 
+                  color: '#FFD700', 
+                  marginBottom: '1rem',
+                  fontSize: '1.3rem'
+                }}>
+                  💡 Key Takeaways for Your AEO Strategy:
+                </h3>
+                <ul style={{ 
+                  color: 'rgba(255,255,255,0.9)',
+                  lineHeight: '1.8',
+                  paddingLeft: '1.5rem'
+                }}>
+                  <li><strong>Community platforms matter:</strong> Reddit's 40.1% share shows AI values community discussions and real user experiences</li>
+                  <li><strong>Authority sources dominate:</strong> Wikipedia (26.3%) and Google (23.3%) represent trusted, well-structured information</li>
+                  <li><strong>Video content counts:</strong> YouTube's 23.5% proves multimedia content is increasingly important for AI training</li>
+                  <li><strong>Diverse source strategy:</strong> The long tail of sources (Yelp, Facebook, Amazon) shows AI draws from many platforms</li>
+                </ul>
+              </div>
+            </div>
+
             {/* Professional Interactive Cards */}
             <div 
               ref={containerRef}

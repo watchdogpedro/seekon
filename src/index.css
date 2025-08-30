@@ -584,6 +584,16 @@ body {
   .about-content div {
     max-width: 100% !important;
   }
+
+  /* Mobile responsive chart container */
+  .chart-container {
+    padding: 1rem !important;
+    margin: 0 !important;
+  }
+
+  .chart-container img {
+    border-radius: 5px !important;
+  }
 }
 
 /* Desktop Navigation with Dropdown - only apply on desktop screens */
