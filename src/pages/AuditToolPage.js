@@ -910,7 +910,8 @@ const AuditToolPage = () => {
                   <span className="section-icon">📊</span>
                   <h2 className="section-title">Detailed Page Analysis</h2>
                 </div>
-                <table className="data-table">
+                <div className="table-container">
+                  <table className="data-table">
                   <thead>
                     <tr>
                       <th>URL</th>
@@ -963,7 +964,8 @@ const AuditToolPage = () => {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                  </table>
+                </div>
               </section>
 
               <section className="section">

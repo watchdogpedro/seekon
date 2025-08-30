@@ -207,7 +207,7 @@ const HomePage = () => {
             🛰️ How Our Orbital Scan Works
           </h2>
           
-          <div style={{
+          <div className="process-flow" style={{
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -218,7 +218,7 @@ const HomePage = () => {
             gap: '2rem'
           }}>
             {/* Connecting Arrow */}
-            <div style={{
+            <div className="connecting-arrow" style={{
               position: 'absolute',
               top: '50%',
               left: '12%',
@@ -243,7 +243,7 @@ const HomePage = () => {
             </div>
 
             {/* Step 1: Crawling Pages */}
-            <div style={{
+            <div className="process-step" style={{
               background: 'white',
               borderRadius: '20px',
               padding: '2rem',
@@ -293,7 +293,7 @@ const HomePage = () => {
             </div>
 
             {/* Step 2: SEO Analysis */}
-            <div style={{
+            <div className="process-step" style={{
               background: 'white',
               borderRadius: '20px',
               padding: '2rem',
@@ -343,7 +343,7 @@ const HomePage = () => {
             </div>
 
             {/* Step 3: AI Bot Testing */}
-            <div style={{
+            <div className="process-step" style={{
               background: 'white',
               borderRadius: '20px',
               padding: '2rem',
@@ -393,7 +393,7 @@ const HomePage = () => {
             </div>
 
             {/* Step 4: Report Generation */}
-            <div style={{
+            <div className="process-step" style={{
               background: 'white',
               borderRadius: '20px',
               padding: '2rem',

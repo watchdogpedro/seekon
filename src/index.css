@@ -437,6 +437,67 @@ body {
   .container {
     padding: 0 var(--space-sm);
   }
+
+  /* Fix horizontal overflow issues */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Ensure all containers respect mobile width */
+  * {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  /* Fix process flow diagram on mobile */
+  .process-flow {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .process-step {
+    width: 100% !important;
+    min-width: unset !important;
+    margin: 0 !important;
+  }
+
+  /* Hide connecting arrow on mobile */
+  .connecting-arrow {
+    display: none !important;
+  }
+
+  /* Fix grid layouts to single column */
+  .score-dashboard,
+  .meter-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Fix table overflow */
+  .data-table {
+    font-size: 0.8rem;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 8px 4px;
+  }
+
+  /* Make tables scrollable on mobile */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent images from overflowing */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Fix any canvas elements */
+  canvas {
+    max-width: 100% !important;
+  }
 }
 
 /* Desktop Navigation with Dropdown - only apply on desktop screens */
