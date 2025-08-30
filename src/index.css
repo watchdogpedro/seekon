@@ -402,8 +402,14 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
   .banner-image {
-    max-height: 250px;
-    min-height: 200px;
+    max-height: 350px;
+    min-height: 300px;
+    object-fit: cover;
+  }
+
+  /* Increase banner section prominence on mobile */
+  section:first-of-type {
+    padding: 2rem 0 !important;
   }
 
   /* Show mobile page title */
