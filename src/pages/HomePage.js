@@ -193,14 +193,14 @@ const HomePage = () => {
 
       {/* Process Flow Diagram Section */}
       <section style={{ 
-        padding: '4rem 0', 
+        padding: '2rem 0', 
         background: 'white',
         textAlign: 'center'
       }}>
         <div className="container">
           <h2 style={{ 
             fontSize: '2.5rem', 
-            marginBottom: '3rem',
+            marginBottom: '1.5rem',
             color: '#2c3e50',
             fontWeight: 'bold'
           }}>
@@ -215,7 +215,7 @@ const HomePage = () => {
             margin: '0 auto',
             position: 'relative',
             flexWrap: 'wrap',
-            gap: '2rem'
+            gap: '1rem'
           }}>
             {/* Connecting Arrow */}
             <div className="connecting-arrow" style={{
@@ -444,11 +444,11 @@ const HomePage = () => {
           </div>
 
           {/* Call to Action */}
-          <div style={{ marginTop: '3rem' }}>
+          <div style={{ marginTop: '2rem' }}>
             <p style={{ 
               fontSize: '1.2rem', 
               color: '#64748b', 
-              marginBottom: '2rem' 
+              marginBottom: '1rem' 
             }}>
               Get your complete AI readiness analysis in under 30 seconds
             </p>

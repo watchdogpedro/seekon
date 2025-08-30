@@ -13,6 +13,20 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const getPageName = (pathname) => {
+    const pageNames = {
+      '/': 'Home',
+      '/about': 'About Us',
+      '/resources': 'Resources',
+      '/key-science': 'Key Science',
+      '/services': 'Services',
+      '/audit-tool': 'Free Audit',
+      '/case-studies': 'Case Studies',
+      '/contact': 'Contact'
+    };
+    return pageNames[pathname] || 'Unknown Page';
+  };
+
   const NavLink = ({ to, children, isSpecial = false, className = '' }) => {
     const isActive = location.pathname === to;
     
@@ -187,6 +201,18 @@ const Navigation = () => {
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
         marginTop: '1rem'
       }} className="mobile-nav">
+        {/* Current Page Indicator */}
+        <div style={{
+          padding: '1rem',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '1.1rem',
+          textAlign: 'center',
+          borderBottom: '2px solid #e5e7eb'
+        }}>
+          📍 Current: {getPageName(location.pathname)}
+        </div>
         <div style={{
           display: 'flex',
           flexDirection: 'column',

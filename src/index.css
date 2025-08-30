@@ -13,14 +13,14 @@
   /* Typography */
   --font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
-  /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4rem;
-  --space-3xl: 6rem;
+  /* Spacing - Reduced for tighter layout */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 2.5rem;
+  --space-3xl: 3rem;
   
   /* Border Radius */
   --radius-sm: 8px;
@@ -89,14 +89,14 @@ body {
 
 /* Hero Section with White Background */
 .hero {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-xl) 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--deep-space);
   background: white;
-  margin-top: 2rem;
+  margin-top: 1rem;
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -158,7 +158,7 @@ body {
 
 .hero p {
   font-size: 1.3rem;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-lg);
   opacity: 0.9;
   max-width: 600px;
   margin-left: auto;
@@ -213,7 +213,7 @@ body {
 
 /* Features Section */
 .features {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-xl) 0;
   background: transparent;
   position: relative;
 }
@@ -221,7 +221,7 @@ body {
 .features h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl);
   color: var(--deep-space);
   font-weight: 700;
 }
@@ -230,7 +230,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-lg);
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-xl);
 }
 
 .feature-card {
@@ -406,17 +406,20 @@ body {
     min-height: 200px;
   }
   
+  /* Reduce hero section padding */
   .hero {
-    margin-top: 1rem;
-    padding: var(--space-2xl) 0;
+    margin-top: 0.5rem !important;
+    padding: var(--space-lg) 0 !important;
   }
   
   .hero h1 {
     font-size: 2.5rem;
+    margin-bottom: var(--space-md) !important;
   }
   
   .hero p {
     font-size: 1.1rem;
+    margin-bottom: var(--space-lg) !important;
   }
   
   .btn {
@@ -434,36 +437,56 @@ body {
     gap: var(--space-md);
   }
   
+  /* Reduce features section padding */
+  .features {
+    padding: var(--space-lg) 0 !important;
+  }
+  
+  .features h2 {
+    margin-bottom: var(--space-lg) !important;
+  }
+  
   .container {
     padding: 0 var(--space-sm);
   }
 
-  /* Fix horizontal overflow issues */
-  body {
-    overflow-x: hidden;
+  /* AGGRESSIVE overflow prevention */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
   }
 
-  /* Ensure all containers respect mobile width */
-  * {
-    max-width: 100vw;
-    box-sizing: border-box;
+  /* Force all elements to respect viewport width */
+  *, *::before, *::after {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
   }
 
   /* Fix process flow diagram on mobile */
   .process-flow {
     flex-direction: column !important;
     gap: 1rem !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .process-step {
     width: 100% !important;
     min-width: unset !important;
     margin: 0 !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
   }
 
   /* Hide connecting arrow on mobile */
   .connecting-arrow {
     display: none !important;
+  }
+
+  /* Reduce spacing in process flow sections */
+  .process-flow {
+    gap: 0.5rem !important;
   }
 
   /* Fix grid layouts to single column */
@@ -475,17 +498,20 @@ body {
   /* Fix table overflow */
   .data-table {
     font-size: 0.8rem;
+    min-width: unset !important;
   }
   
   .data-table th,
   .data-table td {
     padding: 8px 4px;
+    white-space: nowrap;
   }
 
   /* Make tables scrollable on mobile */
   .table-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    max-width: 100vw;
   }
 
   /* Prevent images from overflowing */
@@ -496,6 +522,21 @@ body {
 
   /* Fix any canvas elements */
   canvas {
+    max-width: 100% !important;
+  }
+
+  /* Reduce section spacing globally */
+  section {
+    padding: var(--space-lg) 0 !important;
+  }
+
+  /* Force any fixed width containers to be responsive */
+  div[style*="maxWidth"] {
+    max-width: 100% !important;
+  }
+
+  /* Fix any inline styles that might cause overflow */
+  div[style*="1200px"] {
     max-width: 100% !important;
   }
 }
