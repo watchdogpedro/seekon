@@ -405,6 +405,16 @@ body {
     max-height: 250px;
     min-height: 200px;
   }
+
+  /* Show mobile page title */
+  .mobile-page-title {
+    display: block !important;
+  }
+  
+  /* Adjust logo size on mobile to make room for page title */
+  nav .container div:first-child a {
+    font-size: 2rem !important;
+  }
   
   /* Reduce hero section padding */
   .hero {

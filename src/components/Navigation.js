@@ -76,7 +76,7 @@ const Navigation = () => {
         className={className}
         style={{
           textDecoration: 'none',
-          fontWeight: isSpecial ? '700' : '500',
+          fontWeight: isActive ? '700' : (isSpecial ? '700' : '500'),
           padding: '1rem',
           borderBottom: '1px solid #eee',
           borderRadius: '10px',
@@ -84,7 +84,9 @@ const Navigation = () => {
           transition: 'all 0.3s ease',
           background: isActive ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' : 'transparent',
           color: isActive ? 'white' : (isSpecial ? '#667eea' : 'var(--deep-space)'),
-          display: 'block'
+          display: 'block',
+          position: 'relative',
+          borderLeft: isActive ? '4px solid #764ba2' : '4px solid transparent'
         }}
         onMouseEnter={(e) => {
           if (!isActive) {
@@ -99,7 +101,7 @@ const Navigation = () => {
           }
         }}
       >
-        {children}
+        {isActive && '👉 '}{children}
       </Link>
     );
   };
@@ -118,15 +120,26 @@ const Navigation = () => {
         justifyContent: 'space-between',
         alignItems: 'center'
       }}>
-        <Link to="/" style={{
-          fontSize: '2.5rem',
-          fontWeight: '900',
-          color: '#667eea',
-          textDecoration: 'none',
-          textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
-        }} onClick={closeMobileMenu}>
-          SeekON.AI
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <Link to="/" style={{
+            fontSize: '2.5rem',
+            fontWeight: '900',
+            color: '#667eea',
+            textDecoration: 'none',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+          }} onClick={closeMobileMenu}>
+            SeekON.AI
+          </Link>
+          {/* Mobile Page Title */}
+          <div className="mobile-page-title" style={{
+            fontSize: '1rem',
+            fontWeight: '600',
+            color: '#64748b',
+            display: 'none'
+          }}>
+            {getPageName(location.pathname)}
+          </div>
+        </div>
         
         {/* Desktop Navigation */}
         <div style={{
@@ -201,18 +214,6 @@ const Navigation = () => {
         boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
         marginTop: '1rem'
       }} className="mobile-nav">
-        {/* Current Page Indicator */}
-        <div style={{
-          padding: '1rem',
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '1.1rem',
-          textAlign: 'center',
-          borderBottom: '2px solid #e5e7eb'
-        }}>
-          📍 Current: {getPageName(location.pathname)}
-        </div>
         <div style={{
           display: 'flex',
           flexDirection: 'column',
