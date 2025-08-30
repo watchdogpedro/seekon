@@ -439,15 +439,17 @@ body {
   }
 }
 
-/* Desktop Navigation with Dropdown */
-.desktop-nav {
-  display: flex !important;
-}
-.mobile-menu-btn {
-  display: none !important;
-}
-.mobile-nav {
-  display: none !important;
+/* Desktop Navigation with Dropdown - only apply on desktop screens */
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: none !important;
+  }
 }
 
 /* Dropdown Menu CSS - Improved with better hover range */
@@ -507,9 +509,7 @@ body {
   .mobile-menu-btn {
     display: block !important;
   }
-  .mobile-nav {
-    display: block !important;
-  }
+  /* Remove the forced display rule - let JavaScript control mobile nav visibility */
 }
 
 @media (max-width: 992px) {
