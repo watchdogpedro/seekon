@@ -44,10 +44,155 @@ const HomePage = () => {
       <section className="hero">
         <div className="container">
           <div className="hero-content">
-            <h1>
-              <span style={{ fontSize: '3.5em', fontWeight: 'bold' }}>AI</span> <span className="highlight">Searchable</span><br />
-              <span style={{ fontSize: '1.2em', color: '#667eea', fontWeight: '500', marginTop: '0.5rem', display: 'block' }}>revolutionize your company with content creation</span>
-            </h1>
+            <div className="atomic-logo-container" style={{ 
+              position: 'relative', 
+              display: 'inline-block', 
+              marginBottom: '2rem' 
+            }}>
+              {/* Atomic Rings Animation */}
+              <div className="atomic-rings" style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 0,
+                pointerEvents: 'none'
+              }}>
+                <div className="ring ring-1" style={{
+                  position: 'absolute',
+                  width: '200px',
+                  height: '200px',
+                  border: '3px solid rgba(102, 126, 234, 0.3)',
+                  borderRadius: '50%',
+                  top: '-100px',
+                  left: '-100px',
+                  animation: 'rotate-clockwise 20s linear infinite'
+                }}></div>
+                <div className="ring ring-2" style={{
+                  position: 'absolute',
+                  width: '150px',
+                  height: '150px',
+                  border: '2px solid rgba(118, 75, 162, 0.4)',
+                  borderRadius: '50%',
+                  top: '-75px',
+                  left: '-75px',
+                  animation: 'rotate-counter-clockwise 15s linear infinite'
+                }}></div>
+                <div className="ring ring-3" style={{
+                  position: 'absolute',
+                  width: '100px',
+                  height: '100px',
+                  border: '2px solid rgba(0, 212, 170, 0.5)',
+                  borderRadius: '50%',
+                  top: '-50px',
+                  left: '-50px',
+                  animation: 'rotate-clockwise 12s linear infinite'
+                }}></div>
+                
+                {/* Floating Atoms */}
+                <div className="atom atom-1" style={{
+                  position: 'absolute',
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: '#FFD700',
+                  borderRadius: '50%',
+                  top: '-4px',
+                  right: '-104px',
+                  animation: 'orbit-1 20s linear infinite',
+                  boxShadow: '0 0 10px rgba(255, 215, 0, 0.6)'
+                }}></div>
+                <div className="atom atom-2" style={{
+                  position: 'absolute',
+                  width: '6px',
+                  height: '6px',
+                  backgroundColor: '#FF6B6B',
+                  borderRadius: '50%',
+                  top: '-3px',
+                  right: '-78px',
+                  animation: 'orbit-2 15s linear infinite',
+                  boxShadow: '0 0 8px rgba(255, 107, 107, 0.6)'
+                }}></div>
+                <div className="atom atom-3" style={{
+                  position: 'absolute',
+                  width: '5px',
+                  height: '5px',
+                  backgroundColor: '#4ECDC4',
+                  borderRadius: '50%',
+                  top: '-2.5px',
+                  right: '-52.5px',
+                  animation: 'orbit-3 12s linear infinite',
+                  boxShadow: '0 0 6px rgba(78, 205, 196, 0.6)'
+                }}></div>
+              </div>
+
+              {/* Main Logo Text */}
+              <h1 style={{ position: 'relative', zIndex: 1, margin: 0 }}>
+                <div className="ai-searchable-logo" style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '1rem',
+                  flexWrap: 'wrap'
+                }}>
+                  <span className="ai-text" style={{ 
+                    fontSize: '3.5em', 
+                    fontWeight: 'bold',
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
+                    position: 'relative',
+                    animation: 'pulse-glow 3s ease-in-out infinite'
+                  }}>
+                    AI
+                    {/* AI Accent Decorations */}
+                    <span style={{
+                      position: 'absolute',
+                      top: '-10px',
+                      right: '-15px',
+                      fontSize: '0.3em',
+                      color: '#FFD700',
+                      animation: 'twinkle 2s ease-in-out infinite'
+                    }}>✨</span>
+                  </span>
+                  
+                  <span className="searchable-text" style={{ 
+                    fontSize: '3.5em',
+                    fontWeight: 'bold',
+                    background: 'linear-gradient(135deg, #00D4AA 0%, #667eea 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    position: 'relative',
+                    animation: 'pulse-glow 3s ease-in-out infinite 0.5s'
+                  }}>
+                    Searchable
+                    {/* Searchable Accent Decorations */}
+                    <span style={{
+                      position: 'absolute',
+                      top: '-5px',
+                      right: '-10px',
+                      fontSize: '0.25em',
+                      color: '#4ECDC4',
+                      animation: 'float 4s ease-in-out infinite'
+                    }}>🚀</span>
+                  </span>
+                </div>
+                
+                <div style={{ 
+                  fontSize: '1.2em', 
+                  color: '#667eea', 
+                  fontWeight: '500', 
+                  marginTop: '1rem', 
+                  display: 'block',
+                  textAlign: 'center',
+                  opacity: '0.9'
+                }}>
+                  revolutionize your company with content creation
+                </div>
+              </h1>
+            </div>
             <p>
               <span style={{ fontSize: '1.3em', fontWeight: 'bold', color: '#667eea' }}>SeekON</span> tunes your site for LLMs—so ChatGPT, Gemini, and search copilots actually surface you.
             </p>
